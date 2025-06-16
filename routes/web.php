@@ -23,10 +23,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/safe-it', [\App\Http\Controllers\MainController::class, 'showSafePage'])
-        ->name('form');
+        ->name('safe');
 
     Route::get('/report-it', [\App\Http\Controllers\MainController::class, 'showReportpage'])
-        ->name('form');
+        ->name('report');
 
 });
 
