@@ -8,7 +8,7 @@ form.addEventListener('submit', (y) => {
     const apiKey = 'afa479ffc707b7fc7aa4069aa8c39a20ecd0e7881fe8c369f15629514fd24936';
     const urlToAnalyze = document.querySelector("#url").value;
 
-// 1. Envoie l'URL à VirusTotal
+
     fetch('https://www.virustotal.com/api/v3/urls', {
         method: 'POST',
         headers: {
