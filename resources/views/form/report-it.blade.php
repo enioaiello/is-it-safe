@@ -77,8 +77,8 @@
             </div>
 
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                <label for="floatingTextarea2">Comments</label>
+                <textarea class="form-control"  id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2" class="font-">Comments</label>
             </div>
             <button type="submit" class="btn btn-success btn-lg px-5 mt-4">
                 Verify
@@ -94,9 +94,12 @@
     <button type="button" class="btn btn-success">
         <i class="fas fa-info-circle me-2" aria-hidden="true"></i>A propos
     </button>
-    <button type="button" class="btn btn-success">
-        <i class="fas fa-user me-2" aria-hidden="true"></i>Mon compte
-    </button>
+    <a href="/profile">
+        <button type="button" class="btn btn-success">
+            <i class="fas fa-user me-2" aria-hidden="true" ></i>Mon compte
+        </button>
+    </a>
+
 </footer>
 
 <!-- Bootstrap JS Bundle -->

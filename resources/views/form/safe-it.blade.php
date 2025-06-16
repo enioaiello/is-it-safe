@@ -89,9 +89,11 @@
     <button type="button" class="btn btn-success">
         <i class="fas fa-info-circle me-2" aria-hidden="true"></i>A propos
     </button>
-    <button type="button" class="btn btn-success">
-        <i class="fas fa-user me-2" aria-hidden="true"></i>Mon compte
-    </button>
+    <a href="/profile">
+        <button type="button" class="btn btn-success">
+            <i class="fas fa-user me-2" aria-hidden="true" ></i>Mon compte
+        </button>
+    </a>
 </footer>
 
 <!-- Bootstrap JS Bundle -->
