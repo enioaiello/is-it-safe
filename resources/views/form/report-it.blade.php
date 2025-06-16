@@ -65,7 +65,7 @@
 <main class="flex-grow-1">
     <section class="form-container text-center">
         <h2 class="fw-bold mb-4">Report it</h2>
-        <form>
+        <form action="/report/confirm" method="post">
             <div class="mb-4">
                 <input
                     type="url"
@@ -77,7 +77,7 @@
             </div>
 
             <div class="form-floating">
-                <textarea class="form-control"  id="floatingTextarea2" style="height: 100px"></textarea>
+                <textarea class="form-control"  id="floatingTextarea2" style="height: 100px; resize: none"></textarea>
                 <label for="floatingTextarea2" class="font-">Comments</label>
             </div>
             <button type="submit" class="btn btn-success btn-lg px-5 mt-4">

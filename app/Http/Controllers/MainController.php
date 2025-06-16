@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reports;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -24,5 +25,11 @@ class MainController extends Controller
     public function showProposPage()
     {
         return view('form.propos');
+    }
+
+    public function report()
+    {
+        $report = new Reports();
+        //TODO $report->id_type = 1
     }
 }
