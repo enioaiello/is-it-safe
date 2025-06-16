@@ -17,4 +17,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('/safe-it', [\App\Http\Controllers\MainController::class, 'showSafePage'])
+        ->name('form');
+
+    Route::get('/report-it', [\App\Http\Controllers\MainController::class, 'showReportpage'])
+        ->name('form');
+
+});
+
+
 require __DIR__.'/auth.php';
