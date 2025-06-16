@@ -23,6 +23,6 @@ class MainController extends Controller
 
     public function showProposPage()
     {
-        return view('form.propos')
+        return view('form.propos');
     }
 }
