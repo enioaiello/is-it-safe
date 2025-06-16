@@ -75,6 +75,12 @@
             <main class="flex justify-center flex-column max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
                 <h1 class="fs-1 font-bold">Bienvenue sur is it safe !!</h1>
                 <p class="fs-4">“Votre sécurité, notre priorité”</p>
+                <div class="mt-4">
+                    @auth()
+                        <a href="{{ url('/safe-it') }}" style="border: 1px solid whitesmoke; padding: 10px 50px">Safe-it</a>
+                        <a href="{{ url('/report-it') }}" style="border: 1px solid whitesmoke; padding: 10px 50px">Report-it</a>
+                    @endauth
+                </div>
             </main>
         </div>
 

@@ -19,9 +19,10 @@
             }
             input {
                 background-color: rgba(80, 200, 120, 0.4) !important;
+                color: black !important;
             }
             input[type=checkbox] {
-                background-color: white !important;
+                background-color: white;
             }
         </style>
     </head>
