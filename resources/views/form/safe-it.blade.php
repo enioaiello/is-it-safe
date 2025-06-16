@@ -65,9 +65,10 @@
 <main class="flex-grow-1">
     <section class="form-container text-center">
         <h2 class="fw-bold mb-4">Safe it</h2>
-        <form>
+        <form id="safe">
             <div class="mb-4">
                 <input
+                    id="url"
                     type="url"
                     class="form-control form-control-lg"
                     placeholder="example-url.com"
@@ -96,10 +97,13 @@
     </a>
 </footer>
 
+
+
 <!-- Bootstrap JS Bundle -->
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"
 ></script>
+<script src="{{ asset('js/safe-it.js') }}"></script>
 </body>
 </html>
