@@ -15,4 +15,14 @@ class MainController extends Controller
     {
         return view('form.report-it');
     }
+
+    public function showForumPage()
+    {
+        return view('form.forum');
+    }
+
+    public function showProposPage()
+    {
+        return view('form.propos')
+    }
 }
