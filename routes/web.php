@@ -30,5 +30,9 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('/send-test-email', function () {
+    Mail::to('ton.email@gmail.com')->send(new TestEmail());
+    return "Email envoyé !";
+});
 
 require __DIR__.'/auth.php';
