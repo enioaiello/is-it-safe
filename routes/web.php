@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Mail\TestEmail;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,5 +32,9 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('/send-test-email', function () {
+    Mail::to('eaiello@edenschool.fr')->send(new TestEmail());
+    return "Email envoyé !";
+});
 
 require __DIR__.'/auth.php';
