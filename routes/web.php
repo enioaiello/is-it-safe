@@ -33,8 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/report/confirm', [MainController::class, 'report'])->name('confirm_report');
 });
 
-Route::get('/send-test-email', function () {
-    Mail::to('eaiello@edenschool.fr')->send(new TestEmail());
+Route::get('/send-test-email/{email}', function (string $email) {
+    Mail::to($email)->send(new TestEmail());
     return "Email envoyé !";
 });
 
