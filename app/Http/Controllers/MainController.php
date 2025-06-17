@@ -18,11 +18,6 @@ class MainController extends Controller
         return view('welcome', ['user' => $user]);
     }
 
-    public function showDashboard()
-    {
-        return view('dashboard');
-    }
-
     public function showSafePage()
     {
         return view('form.safe-it');
@@ -57,21 +52,22 @@ class MainController extends Controller
     {
         return view('form.result');
     }
+
     public function reportInsertion()
     {
         $report = new Reports();
-        $report->website_name = $_POST['url'];
         $report->id_user = Auth::id();
         $report->id_type = 1;
         $report->description = $_POST['description'];
-        $report->save(); // Save to DB
+        $report->save();
 
         return redirect()->back()->with('success', 'Signalement effectué !');
     }
 
-    public function reportLog()
+    public function report()
     {
-        $reports = Reports::where('id_user', auth()->id())->get();
-        return view('auth.report-log', compact('reports'));
+        $report = new Reports();
+        var_dump(Auth::id());
+        return view('welcome');
     }
 }
