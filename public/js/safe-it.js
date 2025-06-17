@@ -126,6 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const base64Url = btoa(urlToAnalyze).replace(/=+$/, '');
             fullReportLink.href = `https://www.virustotal.com/gui/url/${base64Url}`;
             console.log(`🌐 Voir l’analyse complète : https://www.virustotal.com/gui/url/${base64Url}`);
+
+            document.querySelector('.loading-container').classList.add('d-none');
+            document.querySelector('.result-container').classList.remove('d-none');
         })
         .catch(err => {
             console.error('❌ Erreur détectée :', err);
