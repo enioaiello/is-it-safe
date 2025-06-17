@@ -17,7 +17,7 @@
     />
     <style>
         body {
-            background: #f8f9fa;
+            background: #198754;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -26,6 +26,21 @@
 
         header {
             padding: 2rem 1rem 1rem;
+        }
+        .loading-container {
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .spinner-border {
+            width: 5rem;
+            height: 5rem;
+            border-width: 0.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
         .circular-progress {
             width: 80px;
@@ -92,7 +107,17 @@
     <h1 class="fw-bold">Is It Safe ?</h1>
 </header>
 <main class="container my-5">
-    <h5 class="text-uppercase fw-bold mb-3">résultat pour : <span id="url">{{ $_POST['url'] }}</span></h5>
+    <a href="/safe-it" class="btn btn-light back-button mb-3">← Retour</a>
+
+    <div class="loading-container">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Chargement...</span>
+        </div>
+        <p class="mt-4 fs-4">Analyse en cours...</p>
+    </div>
+
+    <div class="result-container d-none">
+        <h5 class="text-uppercase fw-bold mb-3">résultat pour : <span id="url">{{ $_POST['url'] }}</span></h5>
 
     <div class="bg-dark text-white p-4 rounded">
         <div class="row mb-4">
@@ -119,6 +144,7 @@
 
     <div class="mt-4 text-center">
         <a id="full-report" href="#" target="_blank" class="btn btn-primary">Voir l'analyse complète</a>
+    </div>
     </div>
 </main>
 
