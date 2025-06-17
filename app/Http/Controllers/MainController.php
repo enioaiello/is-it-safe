@@ -57,6 +57,7 @@ class MainController extends Controller
     {
         return view('form.result');
     }
+
     public function reportInsertion()
     {
         $report = new Reports();
@@ -64,7 +65,7 @@ class MainController extends Controller
         $report->id_user = Auth::id();
         $report->id_type = 1;
         $report->description = $_POST['description'];
-        $report->save(); // Save to DB
+        $report->save();
 
         return redirect()->back()->with('success', 'Signalement effectué !');
     }
