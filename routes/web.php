@@ -6,9 +6,8 @@ use App\Http\Controllers\MainController;
 use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [MainController::class, 'index'])
+    ->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,6 +28,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/report-it', [\App\Http\Controllers\MainController::class, 'showReportpage'])
         ->name('report');
+
+    Route::get('/admin', [\App\Http\Controllers\MainController::class, 'admin'])
+        ->name('admin');
 
     Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
         ->name('result');

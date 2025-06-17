@@ -49,6 +49,15 @@
                         >
                             Mon compte
                         </a>
+
+                        @if($user->id_role < 3)
+                            <a
+                                href="{{ route('admin') }}"
+                                class="inline-block px-5 py-1.5 dark:text-[#0a0a0a] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+                            >
+                                espace moderateur
+                            </a>
+                        @endif
                     @else
                         <a
                             href="{{ route('login') }}"
