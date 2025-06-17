@@ -57,11 +57,6 @@ class MainController extends Controller
             abort(403, 'Accès non autorisé');
         }
     }
-    public function showResultPage()
-    {
-        return view('form.result');
-    }
-
     public function reportInsertion()
     {
         $report = new Reports();
