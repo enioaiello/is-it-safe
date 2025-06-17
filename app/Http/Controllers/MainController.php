@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reports;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class MainController extends Controller
@@ -48,17 +47,19 @@ class MainController extends Controller
         } else {
             abort(403, 'Accès non autorisé');
         }
-
-    public function showResultPage() {
+    }
+    public function showResultPage()
+    {
         return view('form.result');
-  
+    }
+
     public function reportInsertion()
     {
         $report = new Reports();
         $report->id_user = Auth::id();
         $report->id_type = 1;
         $report->description = $_POST['description'];
-        $report->save(); // Save to DB
+        $report->save();
 
         return redirect()->back()->with('success', 'Signalement effectué !');
     }
