@@ -16,43 +16,90 @@
         crossorigin="anonymous"
     />
     <style>
+        /* === Structure générale === */
         body {
-            background: #f8f9fa;
+            background: #198754;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            color: white;
         }
+
         header {
             padding: 2rem 1rem 1rem;
         }
+
+        header h1 {
+            color: white;
+        }
+
+        /* === Conteneur de formulaire === */
         .form-container {
             background: white;
-            border: 1px solid #dee2e6;
-            border-radius: 0.5rem;
-            padding: 2rem 3rem;
+            border-radius: 0.75rem;
+            padding: 2.5rem 3rem;
             max-width: 480px;
             margin: 2rem auto;
-            box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            color: #212529;
         }
+
+        /* === Champs de saisie === */
+        .form-control {
+            border-radius: 0.5rem;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+        }
+
+        /* === Bouton principal === */
+        .btn-success {
+            background-color: #157347;
+            border: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-success:hover {
+            background-color: #115c3f;
+        }
+
+        /* === Pied de page === */
         footer {
             padding: 1.5rem 1rem;
             margin-top: auto;
             text-align: center;
+            background: #157347;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
+
         footer .btn {
-            min-width: 110px;
+            min-width: 120px;
             margin: 0.25rem 0.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            color: #198754;
+            background-color: white;
+            border: none;
         }
-        /* Responsive margin for small devices */
+
+        footer .btn:hover {
+            background-color: #f8f9fa;
+            color: #115c3f;
+        }
+
+        /* === Responsive === */
         @media (max-width: 575.98px) {
             .form-container {
-                margin: 1rem 1rem 2rem;
-                padding: 1.5rem 1.5rem;
+                margin: 1rem;
+                padding: 1.5rem;
             }
+
             footer .btn {
                 min-width: 100px;
-                margin: 0.25rem 0.25rem;
-                font-size: 0.9rem;
+                font-size: 0.95rem;
+                margin: 0.25rem;
             }
         }
     </style>
@@ -63,6 +110,8 @@
 </header>
 
 <main class="flex-grow-1">
+    <a href="/" class="btn btn-light back-button mb-3">← Retour</a>
+
     <section class="form-container text-center">
         <h2 class="fw-bold mb-4">Safe it</h2>
         <form action="/result" method="post" id="safe">

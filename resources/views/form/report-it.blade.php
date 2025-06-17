@@ -63,6 +63,8 @@
 </header>
 
 <main class="flex-grow-1">
+    <a href="/" class="btn btn-light back-button mb-3">← Retour</a>
+
     <section class="form-container text-center">
         <h2 class="fw-bold mb-4">Report it</h2>
         <form action="/report/confirm" method="post">
