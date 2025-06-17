@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [\App\Http\Controllers\MainController::class, 'admin'])
         ->name('admin');
+
+    Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
+        ->name('result');
+    Route::post('/report/confirm', [MainController::class, 'reportInsertion'])->name('confirm_report');
 });
 
 Route::get('/send-test-email/{email}', function (string $email) {
