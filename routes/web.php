@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,11 +32,11 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
         ->name('result');
-
+    Route::post('/report/confirm', [MainController::class, 'reportInsertion'])->name('confirm_report');
 });
 
-Route::get('/send-test-email', function () {
-    Mail::to('eaiello@edenschool.fr')->send(new TestEmail());
+Route::get('/send-test-email/{email}', function (string $email) {
+    Mail::to($email)->send(new TestEmail());
     return "Email envoyé !";
 });
 
