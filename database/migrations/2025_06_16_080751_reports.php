@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->string('website_name');
+            $table->integer('id_user');
             $table->integer('id_type');
-            $table->integer('id_threat_level');
+            $table->integer('id_threat_level')->default('1');
             $table->string('description');
+            $table->timestamps();
         });
     }
 

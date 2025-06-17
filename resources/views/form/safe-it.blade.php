@@ -114,7 +114,7 @@
 
     <section class="form-container text-center">
         <h2 class="fw-bold mb-4">Safe it</h2>
-        <form action="/result" method="post">
+        <form action="/result" method="post" id="safe">
             @csrf
             <div class="mb-4">
                 <input

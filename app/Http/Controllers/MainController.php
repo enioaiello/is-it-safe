@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Reports;
 use Illuminate\Http\Request;
-<<<<<<< Updated upstream
-=======
 use Symfony\Component\Console\Input\Input;
->>>>>>> Stashed changes
 
 class MainController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+
+        return view('welcome', ['user' => $user]);
+    }
+
+    public function showDashboard()
+    {
+        return view('dashboard');
+    }
+
     public function showSafePage()
     {
         return view('form.safe-it');
@@ -30,11 +43,10 @@ class MainController extends Controller
         return view('form.propos');
     }
 
-<<<<<<< Updated upstream
     public function showResultPage() {
         return view('form.result');
     }
-=======
+
     public function admin()
     {
         $user = Auth::user();
@@ -49,16 +61,22 @@ class MainController extends Controller
     {
         return view('form.result');
     }
+
     public function reportInsertion()
     {
         $report = new Reports();
+        $report->website_name = $_POST['url'];
         $report->id_user = Auth::id();
         $report->id_type = 1;
         $report->description = $_POST['description'];
-        $report->save(); // Save to DB
+        $report->save();
 
         return redirect()->back()->with('success', 'Signalement effectué !');
     }
 
->>>>>>> Stashed changes
+    public function reportLog()
+    {
+        $reports = Reports::where('id_user', auth()->id())->get();
+        return view('auth.report-log', compact('reports'));
+    }
 }

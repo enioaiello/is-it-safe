@@ -6,13 +6,10 @@ use App\Http\Controllers\MainController;
 use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'index'])
+    ->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [MainController::class, 'showDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/forum', [MainController::class, 'showForumPage'])->name('profile.edit');
@@ -30,13 +27,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/report-it', [\App\Http\Controllers\MainController::class, 'showReportpage'])
         ->name('report');
 
+    Route::get('/admin', [\App\Http\Controllers\MainController::class, 'admin'])
+        ->name('admin');
+
+    Route::get('/report_log', [MainController::class, 'reportLog'])->name('report_log');
+
     Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
         ->name('result');
-
+    Route::post('/report/confirm', [MainController::class, 'reportInsertion'])->name('confirm_report');
 });
 
-Route::get('/send-test-email', function () {
-    Mail::to('eaiello@edenschool.fr')->send(new TestEmail());
+Route::get('/send-test-email/{email}', function (string $email) {
+    Mail::to($email)->send(new TestEmail());
     return "Email envoyé !";
 });
 
