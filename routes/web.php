@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/report-it', [\App\Http\Controllers\MainController::class, 'showReportpage'])
         ->name('report');
 
+    Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
+        ->name('result');
     Route::post('/report/confirm', [MainController::class, 'reportInsertion'])->name('confirm_report');
 });
 

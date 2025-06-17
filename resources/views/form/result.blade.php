@@ -21,18 +21,48 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            padding: 20px;
         }
+
         header {
             padding: 2rem 1rem 1rem;
         }
-        .form-container {
-            background: white;
-            border: 1px solid #dee2e6;
+        .circular-progress {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #198754 0deg,
+                #dcdcdc 0deg
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: background 0.5s ease;
+        }
+
+        .circular-progress::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: #adb5bd; /* gris clair comme dans la maquette */
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .percentage-text {
+            position: relative;
+            z-index: 2;
+            font-weight: bold;
+            font-size: 1rem;
+            color: #212529;
+        }
+
+        .list-group-item {
             border-radius: 0.5rem;
-            padding: 2rem 3rem;
-            max-width: 480px;
-            margin: 2rem auto;
-            box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+            margin-bottom: 10px;
         }
         footer {
             padding: 1.5rem 1rem;
@@ -61,29 +91,38 @@
 <header class="text-center">
     <h1 class="fw-bold">Is It Safe ?</h1>
 </header>
+<main class="container my-5">
+    <h5 class="text-uppercase fw-bold mb-3">résultat pour : <span id="url">{{ $_POST['url'] }}</span></h5>
 
-<main class="flex-grow-1">
-    <section class="form-container text-center">
-        <h2 class="fw-bold mb-4">Safe it</h2>
-        <form action="/result" method="post" id="safe">
-            @csrf
-            <div class="mb-4">
-                <input
-                    id="url"
-                    name="url"
-                    type="url"
-                    class="form-control form-control-lg"
-                    placeholder="example-url.com"
-                    required
-                    aria-label="URL to verify"
-                />
+    <div class="bg-dark text-white p-4 rounded">
+        <div class="row mb-4">
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                <div class="circular-progress" id="circular-progress">
+                    <span class="percentage-text safety-percentage">...</span>
+                </div>
             </div>
-            <button type="submit" class="btn btn-success btn-lg px-5">
-                Verify
-            </button>
-        </form>
-    </section>
+            <div class="col-md-9">
+                <p class="mb-2">note globale des utilisateurs :</p>
+                <p class="mb-2">note globale du staff :</p>
+            </div>
+            <div class="result mt-3"></div>
+        </div>
+
+        <ul id="result-list" class="list-group">
+            <!-- Résultats ajoutés dynamiquement ici -->
+        </ul>
+
+        <div class="text-center mt-3">
+            <button id="show-more" class="btn btn-outline-light d-none">Voir plus</button>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a id="full-report" href="#" target="_blank" class="btn btn-primary">Voir l'analyse complète</a>
+    </div>
 </main>
+
+
 
 <footer>
     <button type="button" class="btn btn-success">
@@ -99,12 +138,11 @@
     </a>
 </footer>
 
-
-
 <!-- Bootstrap JS Bundle -->
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"
 ></script>
+<script src="{{ asset('js/safe-it.js') }}"></script>
 </body>
 </html>

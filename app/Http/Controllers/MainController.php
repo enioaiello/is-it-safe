@@ -29,6 +29,9 @@ class MainController extends Controller
         return view('form.propos');
     }
 
+    public function showResultPage() {
+        return view('form.result');
+  
     public function reportInsertion()
     {
         $report = new Reports();
