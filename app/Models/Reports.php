@@ -11,6 +11,7 @@ class Reports extends Model
     protected $table = 'reports';
 
     protected $fillable = [
+        'website_name',
         'id_user',
         'id_type',
         'id_threat_level',

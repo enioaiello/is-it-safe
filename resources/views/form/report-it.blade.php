@@ -74,6 +74,7 @@
                     placeholder="example-url.com"
                     required
                     aria-label="URL to verify"
+                    name="url"
                 />
             </div>
 

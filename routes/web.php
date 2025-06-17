@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/', [MainController::class, 'index'])
     ->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [MainController::class, 'showDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/forum', [MainController::class, 'showForumPage'])->name('profile.edit');
@@ -31,6 +29,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [\App\Http\Controllers\MainController::class, 'admin'])
         ->name('admin');
+
+    Route::get('/report_log', [MainController::class, 'reportLog'])->name('report_log');
 
     Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
         ->name('result');
