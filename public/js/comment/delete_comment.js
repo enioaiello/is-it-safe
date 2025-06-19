@@ -1,6 +1,8 @@
 const deleteButtons = document.querySelectorAll('#delete-comment');
 
-function deleteComment(button) {
+function deleteComment(arg) {
+    const button = arg instanceof Event ? arg.currentTarget : arg;
+
     if (confirm('Are you sure you want to delete this comment?')) {
         const idComment = button.dataset.idComment;
 
@@ -24,6 +26,7 @@ function deleteComment(button) {
             });
     }
 }
+
 
 
 deleteButtons.forEach(button => {

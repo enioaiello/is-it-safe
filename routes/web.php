@@ -49,6 +49,7 @@ Route::get('/send-test-email/{email}', function (string $email) {
     return "Email envoyé !";
 });
 
+Route::put('/edit/{id}', [CommentController::class, 'update']);
 Route::delete('/delete/{id}', [CommentController::class, 'destroy']);
 
 

@@ -31,6 +31,29 @@ class CommentController extends Controller {
         }
     }
 
+    public function update(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'newComment' => 'required|string|max:1000',
+            ]);
+
+            $comment = Comments::findOrFail($id);
+
+            if (auth()->user()->id !== $comment->id_user && !in_array(auth()->user()->id_role, [1, 2])) {
+                return response()->json(['error' => 'Unauthorized'], 403);
+            }
+
+            $comment->comment = $request->newComment;
+            $comment->save();
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+
     public function destroy($idComment)
     {
         try {

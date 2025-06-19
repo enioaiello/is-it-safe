@@ -46,7 +46,6 @@ addCommentForm.addEventListener('submit', (e)=>{
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             const comments = document.querySelector('.comments');
             comments.innerHTML += `
                 <div class="card mb-3">
@@ -54,7 +53,7 @@ addCommentForm.addEventListener('submit', (e)=>{
                         <p class="card-text">${data.comment}</p>
                         <p class="card-subtitle text-muted mb-1">by  <strong>${pseudo} </strong></p>
                         <p class="card-subtitle text-muted"><small>created_at ${dateToday()}</small></p>
-                        <button data-id-comment="${data.idComment}">Edit</button>
+                        <button data-id-comment="${data.idComment}" id="edit-comment" onclick="editComment(this)">Edit</button>
                         <button data-id-comment="${data.idComment}" id="delete-comment" onclick="deleteComment(this)">Delete</button>
                     </div>
                 </div>`
