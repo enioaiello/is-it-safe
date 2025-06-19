@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
     <style>
         body {
-            background: #f8f9fa;
+            background-color: #50C878;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -31,10 +31,23 @@
             padding: 1.5rem 1rem;
             margin-top: auto;
             text-align: center;
+            background: #157347;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
+
         footer .btn {
-            min-width: 110px;
+            min-width: 120px;
             margin: 0.25rem 0.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            color: #198754;
+            background-color: white;
+            border: none;
+        }
+
+        footer .btn:hover {
+            background-color: #f8f9fa;
+            color: #115c3f;
         }
         @media (max-width: 575.98px) {
             .form-container {

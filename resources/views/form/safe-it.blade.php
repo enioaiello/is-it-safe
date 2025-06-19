@@ -18,7 +18,7 @@
     <style>
         /* === Structure générale === */
         body {
-            background: #198754;
+            background-color: #50C878;
             min-height: 100vh;
             display: flex;
             flex-direction: column;

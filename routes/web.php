@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/propos', [MainController::class, 'showProposPage'])->name('profile.edit');
+Route::get('/propos', [MainController::class, 'showProposPage'])->name('propos');
 
 Route::middleware('auth')->group(function () {
     Route::get('/safe-it', [\App\Http\Controllers\MainController::class, 'showSafePage'])
