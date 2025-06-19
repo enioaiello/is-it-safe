@@ -49,7 +49,7 @@
 <main class="container my-5">
     <h1 class="mb-4">Liste des forums</h1>
 
-    <button id="new-forum-button" class="btn btn-primary mb-4">New Forum</button>
+    <button id="new-forum-button" class="btn btn-primary mb-4">Créer un Forum</button>
 
     <form id="new-forum-form" class="mb-4 d-none">
         @csrf
@@ -91,7 +91,13 @@
 
 
 @if($forums->isEmpty())
-        <p>Aucun forum disponible.</p>
+<div class="card mb-3">
+@if($trimmed)
+<p class=" pt-3 pb-3 mb-0 fs-3 fw-bold text-center">Aucun forum concernant {{ $trimmed }} n’a été créé. Tu peux en créer un !</p>
+@else
+        <p class="pt-3 pb-3 mb-0 fs-3 fw-bold text-center">Aucun forum disponible. Commence la discussion !</p>
+        @endif
+    </div>
     @endif
 </main>
 <footer>

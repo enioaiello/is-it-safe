@@ -19,7 +19,7 @@
                             @elseif($report->id_status === 2)<div style="display: none">{{ $text = 'Signalement Accepté'}} {{ $color = 'green' }}</div>
                             @elseif($report->id_status === 3)<div style="display: none">{{ $text = 'Signalement Refusé'}} {{ $color = 'red' }}</div>
                             @endif
-                            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-md transition hover:shadow-lg border dark:border-gray-600">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-md transition hover:shadow-lg " style="border: 1px solid {{ $color }}">
                                 <div class="flex flex-row md:flex-row md:justify-between gap-4">
                                     <div class="flex flex-col">
                                         <div>

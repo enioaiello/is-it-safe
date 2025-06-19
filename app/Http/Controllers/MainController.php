@@ -50,7 +50,8 @@ class MainController extends Controller
     public function admin()
     {
         $user = Auth::user();
-        $reports = Reports::where('id_status', 1)->get();
+        $reports = Reports::where('id_status', 1)
+        ->get();
 
 
         if ($user && $user->id_role < 3) {
@@ -70,12 +71,14 @@ class MainController extends Controller
         $report->description = $_POST['description'];
         $report->save();
 
-        return redirect()->back()->with('success', 'Signalement effectué !');
+        return redirect()->back()->withInput()->with('success', 'Signalement effectué !');
     }
 
     public function reportLog()
     {
-        $reports = Reports::where('id_user', auth()->id())->get();
+        $reports = Reports::where('id_user', auth()->id())
+        ->orderBy('id', 'desc')
+        ->get();
         return view('auth.report-log', compact('reports'));
     }
 
