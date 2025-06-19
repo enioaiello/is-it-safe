@@ -81,13 +81,24 @@ class MainController extends Controller
 
     public function reportAccept($id)
     {
+        $user = Auth::user();
         $report = Reports::where('id', $id)->update(['id_status' => 2]);
-        return redirect()->route('admin');
+        if ($user && $user->id_role < 3) {
+            return redirect()->route('admin');
+        } else {
+            abort(403, 'Accès non autorisé');
+        }
     }
 
     public function reportRefuse($id)
     {
+        $user = Auth::user();
         $report = Reports::where('id', $id)->update(['id_status' => 3]);
-        return redirect()->route('admin');
+        if ($user && $user->id_role < 3) {
+            return redirect()->route('admin');
+        } else {
+            abort(403, 'Accès non autorisé');
+        }
+
     }
 }
