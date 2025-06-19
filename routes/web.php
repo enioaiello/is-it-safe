@@ -13,12 +13,12 @@ Route::get('/dashboard', [MainController::class, 'showDashboard'])->middleware([
 
 Route::middleware('auth')->group(function () {
     Route::get('/forum', [MainController::class, 'showForumPage'])->name('profile.edit');
-    Route::get('/propos', [MainController::class, 'showProposPage'])->name('profile.edit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/propos', [MainController::class, 'showProposPage'])->name('profile.edit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/safe-it', [\App\Http\Controllers\MainController::class, 'showSafePage'])
