@@ -14,6 +14,7 @@ class Reports extends Model
         'website_name',
         'id_user',
         'id_type',
+        'id_status',
         'id_threat_level',
         'description',
     ];

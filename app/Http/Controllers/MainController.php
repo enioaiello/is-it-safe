@@ -50,7 +50,8 @@ class MainController extends Controller
     public function admin()
     {
         $user = Auth::user();
-        $reports = Reports::all();
+        $reports = Reports::where('id_status', 1)->get();
+
 
         if ($user && $user->id_role < 3) {
             return view('admin.dashboard', compact('reports'));
@@ -64,6 +65,7 @@ class MainController extends Controller
         $report = new Reports();
         $report->id_user = Auth::id();
         $report->id_type = $request->input('type');
+        $report->id_status = 1;
         $report->website_name = $_POST['value'];
         $report->description = $_POST['description'];
         $report->save();
@@ -75,5 +77,28 @@ class MainController extends Controller
     {
         $reports = Reports::where('id_user', auth()->id())->get();
         return view('auth.report-log', compact('reports'));
+    }
+
+    public function reportAccept($id)
+    {
+        $user = Auth::user();
+        $report = Reports::where('id', $id)->update(['id_status' => 2]);
+        if ($user && $user->id_role < 3) {
+            return redirect()->route('admin');
+        } else {
+            abort(403, 'Accès non autorisé');
+        }
+    }
+
+    public function reportRefuse($id)
+    {
+        $user = Auth::user();
+        $report = Reports::where('id', $id)->update(['id_status' => 3]);
+        if ($user && $user->id_role < 3) {
+            return redirect()->route('admin');
+        } else {
+            abort(403, 'Accès non autorisé');
+        }
+
     }
 }

@@ -15,6 +15,10 @@
 
                     <div class="space-y-6">
                         @forelse ($reports as $report)
+                            @if($report->id_status === 1) <div style="display: none">{{ $text = 'En attente'}} {{ $color = 'orange' }}</div>
+                            @elseif($report->id_status === 2)<div style="display: none">{{ $text = 'Signalement Accepté'}} {{ $color = 'green' }}</div>
+                            @elseif($report->id_status === 3)<div style="display: none">{{ $text = 'Signalement Refusé'}} {{ $color = 'red' }}</div>
+                            @endif
                             <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-md transition hover:shadow-lg border dark:border-gray-600">
                                 <div class="flex flex-row md:flex-row md:justify-between gap-4">
                                     <div class="flex flex-col">
@@ -35,9 +39,9 @@
                                         </p>
                                     @endif
                                     </div>
-                                <div style="display: flex; align-items: center; flex-direction: column">
-                                    <p class="text-l text-gray-600 dark:text-gray-300">En attente</p>
-                                    <div class="square" style="border-radius: 5px;width: 20px; height: 20px; background-color: orange"></div>
+                                <div style="width: 200px; display: flex; align-items: center; flex-direction: column">
+                                    <p class="text-l text-gray-600 dark:text-gray-300">{{ $text }}</p>
+                                    <div class="square" style="border-radius: 5px;width: 20px; height: 20px; background-color: {{$color}}"></div>
                                 </div>
                                 </div>
                             </div>

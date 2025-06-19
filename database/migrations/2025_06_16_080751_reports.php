@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('website_name');
             $table->integer('id_user');
             $table->integer('id_type');
+            $table->integer('id_status');
             $table->integer('id_threat_level')->default('1');
             $table->string('description');
             $table->timestamps();

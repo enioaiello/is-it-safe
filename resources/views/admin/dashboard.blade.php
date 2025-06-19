@@ -19,9 +19,6 @@
                                 <div class="flex flex-row md:flex-row md:justify-between gap-4">
                                     <div class="flex flex-col">
                                         <div>
-                                            <a href="{{ $report->url }}" target="_blank" class="text-lg font-semibold text-green-700 dark:text-green-400 hover:underline">
-                                                {{ parse_url($report->url, PHP_URL_HOST) ?? $report->url }}
-                                            </a>
                                             <h1 class="text-2xl text-gray-600 dark:text-gray-300">
                                                 {{ $report->website_name }}
                                             </h1>
@@ -36,10 +33,10 @@
                                         @endif
                                     </div>
                                     <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: start; width: 50px">
-                                        <a href="/report/accept">
+                                        <a href="/report/accept/{{ $report->id }}">
                                             <div class=" validate bg-success" style="border-radius: 5px; width: 20px; height: 20px; background-color: #50C878"></div>
                                         </a>
-                                        <a href="/report/refuse">
+                                        <a href="/report/refuse/{{ $report->id }}">
                                             <div class="refuse bg-danger" style="border-radius: 5px; width: 20px; height: 20px; background-color: #DC143C"></div>
                                         </a>
                                     </div>
