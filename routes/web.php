@@ -45,6 +45,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/forum/{id}', [ForumController::class, 'showForm'])
         ->name('forum');
+
+    Route::get('/report/accept/{id}', [MainController::class, 'reportAccept'])->name('accept'); //TODO
+
+    Route::get('/report/refuse/{id}', [MainController::class, 'reportRefuse'])->name('refuse');
 });
 
 Route::get('/send-test-email/{email}', function (string $email) {

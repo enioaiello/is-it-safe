@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             ForumsSeeder::class,
             CommentsSeeder::class,
+            Status_reportsSeeder::class,
         ]);
     }
 }
