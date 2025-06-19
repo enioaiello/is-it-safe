@@ -3,11 +3,9 @@ const editButtons = document.querySelectorAll('#edit-comment');
 function editComment(arg) {
     let button;
 
-    // Si appelé avec un événement (addEventListener)
     if (arg instanceof Event) {
         button = arg.currentTarget;
     } else {
-        // Si appelé avec this (HTML inline)
         button = arg;
     }
 
@@ -35,7 +33,7 @@ function editComment(arg) {
     confirmBtn.addEventListener('click', () => {
         const updatedComment = textarea.value;
 
-        fetch(`/edit/${idComment}`, {
+        fetch(`/editComment/${idComment}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

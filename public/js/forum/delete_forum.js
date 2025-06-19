@@ -1,12 +1,12 @@
-const deleteButtons = document.querySelectorAll('#delete-comment');
+const deleteButtons = document.querySelectorAll('#delete-forum');
 
-function deleteComment(arg) {
+function deleteForum(arg) {
     const button = arg instanceof Event ? arg.currentTarget : arg;
 
-    if (confirm('Are you sure you want to delete this comment?')) {
-        const idComment = button.dataset.idComment;
+    if (confirm('Are you sure you want to delete this forum?')) {
+        const idForum = button.dataset.idForum;
 
-        fetch(`/deleteComment/${idComment}`, {
+        fetch(`/deleteForum/${idForum}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -15,8 +15,8 @@ function deleteComment(arg) {
         })
             .then(response => {
                 if (response.ok) {
-                    const commentCard = button.closest('.card');
-                    if (commentCard) commentCard.remove();
+                    const forumCard = button.closest('.card');
+                    if (forumCard) forumCard.remove();
                 } else {
                     console.error('Erreur lors de la suppression');
                 }
@@ -30,5 +30,5 @@ function deleteComment(arg) {
 
 
 deleteButtons.forEach(button => {
-    button.addEventListener('click', deleteComment);
+    button.addEventListener('click', deleteForum);
 });

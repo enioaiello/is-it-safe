@@ -15,7 +15,7 @@ class CommentController extends Controller {
             ]);
 
             $comment = Comments::create([
-                'id_user' => 1,
+                'id_user' => $request->id_user,
                 'id_forum' => $idForum,
                 'comment' => $request->newComment
             ]);
