@@ -65,10 +65,9 @@ class MainController extends Controller
         return redirect()->back()->with('success', 'Signalement effectué !');
     }
 
-    public function report()
+    public function reportLog()
     {
-        $report = new Reports();
-        var_dump(Auth::id());
-        return view('welcome');
+        $reports = Reports::where('id_user', auth()->id())->get();
+        return view('auth.report-log', compact('reports'));
     }
 }
