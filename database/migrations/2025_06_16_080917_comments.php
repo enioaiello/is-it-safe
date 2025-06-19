@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('id_user');
             $table->integer('id_forum');
             $table->string('comment');
+            $table->timestamps();
         });
     }
 
