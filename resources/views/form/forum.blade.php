@@ -62,6 +62,7 @@
             <textarea class="form-control" name="new_comment" id="new_comment" rows="3" required></textarea>
         </div>
 
+        <input type="hidden" name="id-user" id="id-user" value="{{ auth()->user()->id }}">
         <input type="hidden" name="id_forum" id="id_forum" value="{{ $forum->id }}">
         <input type="hidden" name="pseudo" id="pseudo" value="{{ auth()->user()->pseudo ?? '' }}">
 
@@ -69,21 +70,32 @@
     </form>
 
     <div class="comments">
-        @foreach ($forum->comments as $comment)
-            <div data-id-comment="{{ $comment->id }}" id="comment-card" class="card mb-3">
-                <div class="card-body">
-                    <p class="card-text comment-content">{{ $comment->comment }}</p>
-                    <p class="card-subtitle text-muted mb-1">By: <strong>{{ $comment->user->pseudo }}</strong></p>
-                    <p class="card-subtitle text-muted"><small>Created at: {{ $comment->created_at->format('F jS Y') }}</small></p>
-                    @if($comment->user->pseudo === auth()->user()->pseudo)
-                        <button data-id-comment="{{ $comment->id }}" id="edit-comment">Edit</button>
-                        <button data-id-comment="{{ $comment->id }}" id="delete-comment">Delete</button>
-                    @elseif(auth()->user()->id_role == 1 || auth()->user()->id_role == 2)
-                        <button data-id-comment="{{ $comment->id }}" id="delete-comment">Delete</button>
-                    @endif
-                </div>
+        @if ($forum->comments->isEmpty())
+            <div class="alert alert-info text-center">
+                Aucun commentaire pour l’instant. Soyez le premier à commenter !
             </div>
-        @endforeach
+        @else
+            @foreach ($forum->comments as $comment)
+                <div data-id-comment="{{ $comment->id }}" id="comment-card" class="card mb-3">
+                    <div class="card-body">
+                        <p class="card-text comment-content">{{ $comment->comment }}</p>
+                        <p class="card-subtitle text-muted mb-1">
+                            By: <strong>{{ $comment->user->pseudo }}</strong>
+                        </p>
+                        <p class="card-subtitle text-muted">
+                            <small>Created at: {{ $comment->created_at->format('F jS Y') }}</small>
+                        </p>
+
+                        @if($comment->user->pseudo === auth()->user()->pseudo)
+                            <button data-id-comment="{{ $comment->id }}" id="edit-comment">Edit</button>
+                            <button data-id-comment="{{ $comment->id }}" id="delete-comment">Delete</button>
+                        @elseif(auth()->user()->id_role == 1 || auth()->user()->id_role == 2)
+                            <button data-id-comment="{{ $comment->id }}" id="delete-comment">Delete</button>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        @endif
     </div>
 </main>
 

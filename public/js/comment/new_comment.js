@@ -33,6 +33,7 @@ addCommentForm.addEventListener('submit', (e)=>{
     e.preventDefault();
     const newComment = document.querySelector('#new_comment').value;
     const idForum = document.querySelector('#id_forum').value;
+    const idUser = document.querySelector('#id-user').value;
     const pseudo = document.querySelector('#pseudo').value;
 
     fetch(`/api/new_comment/${idForum}`, {
@@ -41,7 +42,8 @@ addCommentForm.addEventListener('submit', (e)=>{
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            newComment: newComment
+            newComment: newComment,
+            id_user: idUser
         })
     })
         .then(response => response.json())

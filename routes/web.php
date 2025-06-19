@@ -32,7 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [\App\Http\Controllers\MainController::class, 'admin'])
         ->name('admin');
 
-    Route::get('/report_log', [MainController::class, 'reportLog'])->name('report_log');
+    Route::get('/report_log', [MainController::class, 'reportLog'])
+        ->name('report_log');
 
     Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
         ->name('result');
@@ -52,8 +53,11 @@ Route::get('/send-test-email/{email}', function (string $email) {
     return "Email envoyé !";
 });
 
-Route::put('/edit/{id}', [CommentController::class, 'update']);
-Route::delete('/delete/{id}', [CommentController::class, 'destroy']);
+Route::put('/editComment/{id}', [CommentController::class, 'update']);
+Route::delete('/deleteComment/{id}', [CommentController::class, 'destroy']);
+
+Route::put('/editForum/{id}', [ForumController::class, 'update']);
+Route::delete('/deleteForum/{id}', [ForumController::class, 'destroy']);
 
 
 require __DIR__.'/auth.php';
