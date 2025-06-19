@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
@@ -34,12 +36,24 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
         ->name('result');
-    Route::post('/report/confirm', [MainController::class, 'reportInsertion'])->name('confirm_report');
+
+    Route::post('/report/confirm', [MainController::class, 'reportInsertion'])
+        ->name('confirm_report');
+
+    Route::get('/forum/', [ForumController::class, 'showAllForm'])
+        ->name('forum');
+
+    Route::get('/forum/{id}', [ForumController::class, 'showForm'])
+        ->name('forum');
 });
 
 Route::get('/send-test-email/{email}', function (string $email) {
     Mail::to($email)->send(new TestEmail());
     return "Email envoyé !";
 });
+
+Route::put('/edit/{id}', [CommentController::class, 'update']);
+Route::delete('/delete/{id}', [CommentController::class, 'destroy']);
+
 
 require __DIR__.'/auth.php';

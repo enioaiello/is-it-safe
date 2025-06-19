@@ -59,11 +59,12 @@ class MainController extends Controller
         }
     }
 
-    public function reportInsertion()
+    public function reportInsertion(Request $request)
     {
         $report = new Reports();
         $report->id_user = Auth::id();
-        $report->id_type = 1;
+        $report->id_type = $request->input('type');
+        $report->website_name = $_POST['value'];
         $report->description = $_POST['description'];
         $report->save();
 
