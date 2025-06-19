@@ -1,22 +1,54 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Report Log') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div style="color: white; display: flex; flex-direction: column; align-items: center;" class="p-6">
-                    @foreach($reports as $report)
-                        <div class="p-2 mt-2" style="background-color: #50C878; border-radius: 10px; width: 60%">
-                            <h1 class="mb-2" style="font-size: 25px"> {{ $report['website_name'] }}</h1>
-                            <p>{{ $report['description'] }}</p>
-                        </div>
-                    @endforeach
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-gray-100 mb-6">
+                        Historique des signalements
+                    </h3>
+
+                    <div class="space-y-6">
+                        @forelse ($reports as $report)
+                            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-md transition hover:shadow-lg border dark:border-gray-600">
+                                <div class="flex flex-row md:flex-row md:justify-between gap-4">
+                                    <div class="flex flex-col">
+                                        <div>
+                                            <a href="{{ $report->url }}" target="_blank" class="text-lg font-semibold text-green-700 dark:text-green-400 hover:underline">
+                                                {{ parse_url($report->url, PHP_URL_HOST) ?? $report->url }}
+                                            </a>
+                                            <h1 class="text-2xl text-gray-600 dark:text-gray-300">
+                                                {{ $report->website_name }}
+                                            </h1>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300">
+                                                Signalé le {{ $report->created_at->format('d M Y') }}
+                                            </p>
+                                        </div>
+                                    @if ($report->description)
+                                        <p class="mt-4 text-gray-800 dark:text-gray-200">
+                                            {{ $report->description }}
+                                        </p>
+                                    @endif
+                                    </div>
+                                <div style="display: flex; align-items: center; flex-direction: column">
+                                    <p class="text-l text-gray-600 dark:text-gray-300">En attente</p>
+                                    <div class="square" style="border-radius: 5px;width: 20px; height: 20px; background-color: orange"></div>
+                                </div>
+                                </div>
+                            </div>
+
+                        @empty
+                            <p class="text-center text-gray-500 dark:text-gray-300">Aucun signalement trouvé.</p>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+

@@ -33,6 +33,13 @@
                             {{ __('Report Log') }}
                         </x-nav-link>
                 </div>
+                @if(Auth::User()->id_role === 1)
+                    <div class=" cursor-pointer hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
+                            {{ __('Espace Administrateur') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->

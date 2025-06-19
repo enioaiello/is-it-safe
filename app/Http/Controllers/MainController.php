@@ -50,17 +50,18 @@ class MainController extends Controller
     public function admin()
     {
         $user = Auth::user();
+        $reports = Reports::all();
 
         if ($user && $user->id_role < 3) {
-            return view('admin.dashboard');
+            return view('admin.dashboard', compact('reports'));
         } else {
             abort(403, 'Accès non autorisé');
         }
     }
+
     public function reportInsertion()
     {
         $report = new Reports();
-        $report->website_name = $_POST['url'];
         $report->id_user = Auth::id();
         $report->id_type = 1;
         $report->description = $_POST['description'];
