@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">    <style>
+        body {
+            background: #198754;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        header {
+            padding: 2rem 1rem 1rem;
+        }
+        footer {
+            padding: 1.5rem 1rem;
+            margin-top: auto;
+            text-align: center;
+        }
+        footer .btn {
+            min-width: 110px;
+            margin: 0.25rem 0.5rem;
+        }
+        /* Responsive margin for small devices */
+        @media (max-width: 575.98px) {
+            .form-container {
+                margin: 1rem 1rem 2rem;
+                padding: 1.5rem 1.5rem;
+            }
+            footer .btn {
+                min-width: 100px;
+                margin: 0.25rem 0.25rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="text-center">
+    <h1 class="fw-bold">Is It Safe ?</h1>
+</header>
+<main class="container my-5">
+    <h2 class="mb-3">{{ $forum->title }}</h2>
+    <p class="lead">{{ $forum->description }}</p>
+    <p class="text-muted">Created by: <strong>{{ $forum->user->pseudo }}</strong></p>
+    <p class="text-muted">Created at: <em>{{ $forum->created_at->format('F jS Y') }}</em></p>
+
+    <button id="add_comment_button" class="btn btn-primary mb-3">Add Comment</button>
+
+    <form class="d-none mb-4" id="add_comment_form">
+        @csrf
+        <div class="mb-3">
+            <label for="new_comment" class="form-label">Add comment</label>
+            <textarea class="form-control" name="new_comment" id="new_comment" rows="3" required></textarea>
+        </div>
+
+        <input type="hidden" name="id_forum" id="id_forum" value="{{ $forum->id }}">
+        <input type="hidden" name="pseudo" id="pseudo" value="{{ auth()->user()->pseudo ?? '' }}">
+
+        <button type="submit" class="btn btn-success">Send</button>
+    </form>
+
+    <div class="comments">
+        @foreach ($forum->comments as $comment)
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">{{ $comment->comment }}</p>
+                    <p class="card-subtitle text-muted mb-1">By: <strong>{{ $comment->user->pseudo }}</strong></p>
+                    <p class="card-subtitle text-muted"><small>Created at: {{ $comment->created_at->format('F jS Y') }}</small></p>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</main>
+
+<footer>
+    <button type="button" class="btn btn-success">
+        <i class="fas fa-comments me-2" aria-hidden="true"></i>Forum
+    </button>
+    <button type="button" class="btn btn-success">
+        <i class="fas fa-info-circle me-2" aria-hidden="true"></i>A propos
+    </button>
+    <a href="/profile">
+        <button type="button" class="btn btn-success">
+            <i class="fas fa-user me-2" aria-hidden="true" ></i>Mon compte
+        </button>
+    </a>
+</footer>
+<script src="{{ asset('js/new_comment.js') }}"></script>
+</body>
+</html>

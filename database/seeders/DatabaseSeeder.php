@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             Threat_levelSeeder::class,
             Types_reportsSeeder::class,
+            UsersSeeder::class,
+            ForumsSeeder::class,
+            CommentsSeeder::class,
         ]);
     }
 }

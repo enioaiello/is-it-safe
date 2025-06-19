@@ -15,4 +15,15 @@ class Comments extends Model
         'id_forum',
         'comment',
     ];
+
+    public function forum()
+    {
+        return $this->belongsTo(Forums::class, 'id_forum');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
 }

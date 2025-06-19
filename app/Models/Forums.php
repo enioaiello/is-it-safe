@@ -15,4 +15,15 @@ class Forums extends Model
         'title',
         'description',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comments::class, 'id_forum');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
 }
