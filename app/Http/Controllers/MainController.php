@@ -50,9 +50,10 @@ class MainController extends Controller
     public function admin()
     {
         $user = Auth::user();
+        $reports = Reports::all();
 
         if ($user && $user->id_role < 3) {
-            return view('admin.dashboard');
+            return view('admin.dashboard', compact('reports'));
         } else {
             abort(403, 'Accès non autorisé');
         }
