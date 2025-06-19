@@ -5,9 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">    <style>
-        body {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+         body {
             background: #198754;
             min-height: 100vh;
             display: flex;
@@ -68,11 +70,17 @@
 
     <div class="comments">
         @foreach ($forum->comments as $comment)
-            <div class="card mb-3">
+            <div data-id-comment="{{ $comment->id }}" id="comment-card" class="card mb-3">
                 <div class="card-body">
                     <p class="card-text">{{ $comment->comment }}</p>
                     <p class="card-subtitle text-muted mb-1">By: <strong>{{ $comment->user->pseudo }}</strong></p>
                     <p class="card-subtitle text-muted"><small>Created at: {{ $comment->created_at->format('F jS Y') }}</small></p>
+                    @if($comment->user->pseudo === auth()->user()->pseudo)
+                        <button data-id-comment="{{ $comment->id }}">Edit</button>
+                        <button data-id-comment="{{ $comment->id }}" id="delete-comment">Delete</button>
+                    @elseif(auth()->user()->id_role == 1 || auth()->user()->id_role == 2)
+                        <button data-id-comment="{{ $comment->id }}" id="delete-comment">Delete</button>
+                    @endif
                 </div>
             </div>
         @endforeach
@@ -93,5 +101,6 @@
     </a>
 </footer>
 <script src="{{ asset('js/new_comment.js') }}"></script>
+<script src="{{ asset('js/delete_comment.js') }}"></script>
 </body>
 </html>

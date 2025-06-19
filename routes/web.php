@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -47,5 +48,8 @@ Route::get('/send-test-email/{email}', function (string $email) {
     Mail::to($email)->send(new TestEmail());
     return "Email envoyé !";
 });
+
+Route::delete('/delete/{id}', [CommentController::class, 'destroy']);
+
 
 require __DIR__.'/auth.php';
