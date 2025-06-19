@@ -18,6 +18,11 @@ class MainController extends Controller
         return view('welcome', ['user' => $user]);
     }
 
+    public function showDashboard()
+    {
+        return view('dashboard');
+    }
+
     public function showSafePage()
     {
         return view('form.safe-it');
