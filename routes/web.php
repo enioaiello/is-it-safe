@@ -44,10 +44,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/forum/', [ForumController::class, 'showAllForm'])
         ->name('forum');
 
+    Route::get('/forum/{trim}', [ForumController::class, 'showSpecForm'])
+        ->name('forum_search');
+
     Route::get('/forum/{id}', [ForumController::class, 'showForm'])
         ->name('forum');
 
-    Route::get('/report/accept/{id}', [MainController::class, 'reportAccept'])->name('accept'); //TODO
+    Route::get('/report/accept/{id}', [MainController::class, 'reportAccept'])->name('accept');
 
     Route::get('/report/refuse/{id}', [MainController::class, 'reportRefuse'])->name('refuse');
 });

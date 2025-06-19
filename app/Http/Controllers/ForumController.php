@@ -26,6 +26,13 @@ class ForumController extends Controller {
 
     }
 
+    public function showSpecForm($trimmed)
+    {
+        
+        $forums = Forums::where('title', 'LIKE', '%'. $trimmed .'%')->get();
+        return view('form/all-forum', compact('forums', 'trimmed'));
+    }
+
     public function addForum(Request $request)
     {
         try {

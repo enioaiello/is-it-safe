@@ -105,6 +105,26 @@
         </form>
 
         <p class="text-success mt-2">{{ session('success') }}</p>
+        @if(session('success'))
+    @php
+        function getDomainName($url) {
+            $host = parse_url($url, PHP_URL_HOST);
+            if (!$host) return null;
+            $hostParts = explode('.', $host);
+            if (count($hostParts) >= 2) {
+                return $hostParts[count($hostParts) - 2];
+            }
+            return null;
+        }
+
+        $value = old('value');
+        $trimmed = $value ? getDomainName($value) : null;
+    @endphp
+<a href="/forum/{{ $trimmed }}">
+            <button class="btn btn-outline-light" style=" background-color:#50C878">Envie d'en parler aux autres ?</button>
+        </a>
+@endif
+
     </section>
 </main>
 

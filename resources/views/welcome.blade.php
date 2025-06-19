@@ -25,6 +25,16 @@
         .text-side {
             max-width: 500px;
         }
+        img {
+            user-select:none;
+        }
+        .spinny {
+             animation: spinny 5s cubic-bezier(.45,.05,0,.99) forwards;
+        }
+        @keyframes spinny {
+            0% { transform: rotate(0deg) }
+            100% { transform: rotate(4320deg) }
+        }
     </style>
 </head>
 <body>
@@ -83,8 +93,8 @@
                 <div style="height: 300px; background-color: rgba(255,255,255,0.2); border-radius: 20px;" class="d-flex align-items-center justify-content-center p-3">
                     <img src="{{ asset('img/samba-removebg-preview.png') }}"
                          alt="Illustration Samba"
-                         class="img-fluid h-100"
-                         style="object-fit: contain;">
+                         class="img-fluid h-100 samba"
+                         style="object-fit: contain;" draggable="false">
                 </div>
             </div>
         </div>
@@ -93,5 +103,6 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('js/easter-egg.js') }}"></script>
 </body>
 </html>

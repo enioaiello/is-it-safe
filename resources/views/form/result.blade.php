@@ -126,9 +126,26 @@
                     <span class="percentage-text safety-percentage">...</span>
                 </div>
             </div>
-            <div class="col-md-9">
-                <p class="mb-2">note globale des utilisateurs :</p>
-                <p class="mb-2">note globale du staff :</p>
+            <div class="col-md-9 d-flex flex-row justify-content-between">
+                <div>
+                   <p class="mb-2">note globale des utilisateurs :</p>
+                <p class="mb-2">note globale du staff :</p> 
+                </div>
+                <div class="text-center mt-3">
+                    @php function getDomainName($url) {
+                            $host = parse_url($url, PHP_URL_HOST);
+                            $hostParts = explode('.', $host);
+                            if (count($hostParts) >= 2) {
+                                return $hostParts[count($hostParts) - 2];
+                            }
+                            return null;
+                        }
+                        $trimmed = getDomainName($_POST['url'])
+                    @endphp
+                    <a href="/forum/{{ $trimmed }}">
+                        <button class="btn btn-outline-light">Voir les forums associés</button>
+                    </a>
+        </div>
             </div>
             <div class="result mt-3"></div>
         </div>
