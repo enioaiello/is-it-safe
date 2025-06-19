@@ -16,4 +16,13 @@ class ForumController extends Controller {
 
         return view('form/forum', ['forum' => $forum]);
     }
+
+    public function showAllForm() {
+        $forums = Forums::with('user')->orderBy('created_at', 'desc')->get();
+
+        //dd($forums->toArray());
+
+        return view('form/all-forum', ['forums' => $forums]);
+
+    }
 }

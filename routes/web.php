@@ -40,6 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/report/confirm', [MainController::class, 'reportInsertion'])
         ->name('confirm_report');
 
+    Route::get('/forum/', [ForumController::class, 'showAllForm'])
+        ->name('forum');
+
     Route::get('/forum/{id}', [ForumController::class, 'showForm'])
         ->name('forum');
 });
