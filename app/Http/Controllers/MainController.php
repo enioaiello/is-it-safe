@@ -53,6 +53,7 @@ class MainController extends Controller
             abort(403, 'Accès non autorisé');
         }
     }
+
     public function reportInsertion()
     {
         $report = new Reports();
