@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->integer('id_role')->default(3);
-            $table->integer('id_picture')->default(1);
             $table->string('pseudo');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('fame')->default(100)->max(200)->min(0);
             $table->rememberToken();
             $table->timestamps();
         });

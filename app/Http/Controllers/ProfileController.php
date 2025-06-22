@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use App\Models\User_picture;
-use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -18,24 +16,10 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        $pp = User_picture::all();
         return view('profile.edit', [
             'user' => $request->user(),
-            'pps' => $pp
         ]);
     }
-
-    /**
-     * Display all possible profile pictures
-     */
-
-     public function switch_pictures($id)
-     {
-        DB::table('users')->where('id', Auth::id())
-                ->update(['id_picture' => $id]);
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
-     }
 
     /**
      * Update the user's profile information.
