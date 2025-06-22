@@ -32,5 +32,5 @@ if(encyclopedy != null) {
         const encyclopedyBlock = document.getElementById('encyclopedy')
         encyclopedyBlock.classList.add('hidden')
     })
-}) 
+})
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use App\Models\User_picture;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reports;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class MainController extends Controller
 
     public function showDashboard()
     {
-        return view('dashboard');
+        $pp = User_Picture::where('id', Auth::user()->id_picture)->first();
+        return view('dashboard', compact('pp'));
     }
 
     public function showSafePage()
@@ -86,6 +88,14 @@ class MainController extends Controller
     {
         $user = Auth::user();
         $report = Reports::where('id', $id)->update(['id_status' => 2]);
+        $users = Reports::where('id', $id)->first();
+        $fame = User::where('id', $report->id_user)->get();
+        if( $fame->fame > 195) {
+            User::where('id', $id)->update(['fame' => 200]);
+        } else {
+            User::where('id', $users->id_user)->increment('fame', 5);
+        }
+        
         if ($user && $user->id_role < 3) {
             return redirect()->route('admin');
         } else {
@@ -97,6 +107,14 @@ class MainController extends Controller
     {
         $user = Auth::user();
         $report = Reports::where('id', $id)->update(['id_status' => 3]);
+        $users = Reports::where('id', $id)->first();
+        $fame = User::where('id', $report->id_user)->get();
+        if( $fame->fame < 10) {
+            User::where('id', $id)->update(['fame' => 0]);
+        } else {
+            User::where('id', $users->id_user)->decrement('fame', 10);
+        }
+
         if ($user && $user->id_role < 3) {
             return redirect()->route('admin');
         } else {
