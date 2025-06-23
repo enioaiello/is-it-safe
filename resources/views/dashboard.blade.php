@@ -21,14 +21,14 @@
     @endif
 
     @if(Auth::user()->id_role < 3)
-        @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"><i class="ri-shield-fill hover-mod" style="color:#EA2E2E; font-size:25px;"></i> <p id="failure" class="text-sm speech mod hidden"
+        @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"><i class="ri-shield-fill hover-mod" style="color:#EA2E2E; font-size:25px;"></i> <p id="mod" class="text-sm speech mod hidden"
     style="border-radius:10px; position: absolute; bottom: 100%;left: 50%; transform: translateX(-50%);white-space: nowrap; background-color:oklch(21.6% 0.006 56.043); padding: 5px">Membre du staff</p> </div>' @endphp
     @endif
 
     @if(Auth::user()->id_role == 1)
         @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"><i class="ri-vip-crown-fill hover-owner" style="background: linear-gradient(45deg,red 0%,red 15%,orange 25%,yellow 40%,green 55%,blue 70%,indigo 85%,violet 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; font-size:25px;"></i> <p id="failure" class="text-sm speech owner hidden"
+  -webkit-text-fill-color: transparent; font-size:25px;"></i> <p id="owner" class="text-sm speech owner hidden"
     style="border-radius:10px; position: absolute; bottom: 100%;left: 50%; transform: translateX(-50%);white-space: nowrap; background-color:oklch(21.6% 0.006 56.043); padding: 5px">Créateur</p> </div>' @endphp
     @endif
 

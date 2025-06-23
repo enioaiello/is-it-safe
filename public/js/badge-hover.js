@@ -41,7 +41,7 @@ if(moderator != null) {
     moderator.addEventListener('mouseover', (event)=> {
         const moderatorBlock = document.getElementById('mod')
         moderatorBlock.classList.remove('hidden')
-        encyclopedy.addEventListener('mouseout', (event)=> {
+        moderator.addEventListener('mouseout', (event)=> {
             const moderatorBlock = document.getElementById('mod')
             moderatorBlock.classList.add('hidden')
         })
@@ -50,9 +50,10 @@ if(moderator != null) {
 
 if(owner != null) {
     owner.addEventListener('mouseover', (event)=> {
+        console.log('hello')
         const ownerBlock = document.getElementById('owner')
-        owner.classList.remove('hidden')
-        encyclopedy.addEventListener('mouseout', (event)=> {
+        ownerBlock.classList.remove('hidden')
+        owner.addEventListener('mouseout', (event)=> {
             const ownerBlock = document.getElementById('owner')
             ownerBlock.classList.add('hidden')
         })
