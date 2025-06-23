@@ -129,7 +129,7 @@
             <div class="col-md-9 d-flex flex-row justify-content-between">
                 <div>
                    <p class="mb-2">note globale des utilisateurs :</p>
-                <p class="mb-2">note globale du staff :</p> 
+                <p class="mb-2">note globale du staff :</p>
                 </div>
                 <div class="text-center mt-3">
                     @php function getDomainName($url) {
@@ -142,7 +142,7 @@
                         }
                         $trimmed = getDomainName($_POST['url'])
                     @endphp
-                    <a href="/forum/{{ $trimmed }}">
+                    <a href="/forum/search/{{ $trimmed }}">
                         <button class="btn btn-outline-light">Voir les forums associés</button>
                     </a>
         </div>

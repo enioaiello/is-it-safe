@@ -120,7 +120,7 @@
         $value = old('value');
         $trimmed = $value ? getDomainName($value) : null;
     @endphp
-<a href="/forum/{{ $trimmed }}">
+<a href="/forum/search/{{ $trimmed }}">
             <button class="btn btn-outline-light" style=" background-color:#50C878">Envie d'en parler aux autres ?</button>
         </a>
 @endif
