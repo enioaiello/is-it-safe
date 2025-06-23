@@ -6,20 +6,25 @@
     </x-slot>
     @php $badges = '' @endphp
     @if(Auth::user()->fame <= 30)
-    @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"> <i class="ri-file-damage-line hover-failure" style="color:#EA2E2E; font-size:25px;"></i> <p id="failure" class="text-sm speech failure hidden" 
+    @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"> <i class="ri-file-damage-line hover-failure" style="color:#EA2E2E; font-size:25px;"></i> <p id="failure" class="text-sm speech failure hidden"
     style="border-radius:10px; position: absolute; bottom: 100%;left: 50%; transform: translateX(-50%);white-space: nowrap; background-color:oklch(21.6% 0.006 56.043); padding: 5px">This user isnt viable</p> </div>' @endphp
     @endif
 
     @if(Auth::user()->fame >= 130)
-    @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"> <i class="ri-star-fill hover-trusted" style="color:#F0BB40; font-size:25px;"></i> <p id="trusted" class="text-sm speech trusted hidden" 
+    @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"> <i class="ri-star-fill hover-trusted" style="color:#F0BB40; font-size:25px;"></i> <p id="trusted" class="text-sm speech trusted hidden"
     style="border-radius:10px; position: absolute; bottom: 100%;left: 50%; transform: translateX(-50%);white-space: nowrap; background-color:oklch(21.6% 0.006 56.043); padding: 5px">This user is a worthy one</p></div>' @endphp
     @endif
 
     @if(Auth::user()->fame >= 190)
-    @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"> <i class="ri-bookmark-fill hover-encyclopedy" style="color:#96DAB7; font-size:25px;"></i> <p id="encyclopedy" class="text-sm speech encyclopedy hidden" 
+    @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"> <i class="ri-bookmark-fill hover-encyclopedy" style="color:#96DAB7; font-size:25px;"></i> <p id="encyclopedy" class="text-sm speech encyclopedy hidden"
     style="border-radius:10px; position: absolute; bottom: 100%;left: 50%; transform: translateX(-50%);white-space: nowrap; background-color:oklch(21.6% 0.006 56.043); padding: 5px">This user is a true encyclopedy</p></div>' @endphp
     @endif
-   
+
+    @if(Auth::user()->id_role < 3)
+        @php $badges .= '<div class="flex justify-center" style="margin: 0 5px; flex-direction:column-reverse; align-items:center; position:relative;"><i class="ri-shield-line hover-failure" style="color:#EA2E2E; font-size:25px;"></i> <p id="failure" class="text-sm speech failure hidden"
+    style="border-radius:10px; position: absolute; bottom: 100%;left: 50%; transform: translateX(-50%);white-space: nowrap; background-color:oklch(21.6% 0.006 56.043); padding: 5px">staff member</p> </div>' @endphp
+    @endif
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
