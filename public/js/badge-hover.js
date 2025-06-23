@@ -1,6 +1,8 @@
 const failure = document.querySelector('.hover-failure')
 const trusted = document.querySelector('.hover-trusted')
 const encyclopedy = document.querySelector('.hover-encyclopedy')
+const moderator = document.querySelector('.hover-mod')
+const owner = document.querySelector('.hover-owner')
 
 if(failure != null) {
     failure.addEventListener('mouseover', (event)=> {
@@ -33,4 +35,26 @@ if(encyclopedy != null) {
         encyclopedyBlock.classList.add('hidden')
     })
 })
+}
+
+if(moderator != null) {
+    moderator.addEventListener('mouseover', (event)=> {
+        const moderatorBlock = document.getElementById('mod')
+        moderatorBlock.classList.remove('hidden')
+        encyclopedy.addEventListener('mouseout', (event)=> {
+            const moderatorBlock = document.getElementById('mod')
+            moderatorBlock.classList.add('hidden')
+        })
+    })
+}
+
+if(owner != null) {
+    owner.addEventListener('mouseover', (event)=> {
+        const ownerBlock = document.getElementById('owner')
+        owner.classList.remove('hidden')
+        encyclopedy.addEventListener('mouseout', (event)=> {
+            const ownerBlock = document.getElementById('owner')
+            ownerBlock.classList.add('hidden')
+        })
+    })
 }

@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/forum/', [ForumController::class, 'showAllForm'])
         ->name('forum');
 
-    Route::get('/forum/{trim}', [ForumController::class, 'showSpecForm'])
+    Route::get('/forum/search/{trim}', [ForumController::class, 'showSpecForm'])
         ->name('forum_search');
 
     Route::get('/forum/{id}', [ForumController::class, 'showForm'])
