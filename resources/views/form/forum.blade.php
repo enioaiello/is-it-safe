@@ -79,9 +79,15 @@
                 <div data-id-comment="{{ $comment->id }}" id="comment-card" class="card mb-3">
                     <div class="card-body">
                         <p class="card-text comment-content">{{ $comment->comment }}</p>
-                        <p class="card-subtitle text-muted mb-1">
-                            By: <strong>{{ $comment->user->pseudo }}</strong>
-                        </p>
+
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="mb-0 text-muted">
+                                <span>By: </span>
+                                <img src="{{ asset('image/' . $comment->user->picture->picture_url) }}" alt="Profile picture" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+                                <span><strong>{{ $comment->user->pseudo }}</strong></span>
+                            </div>
+                        </div>
+
                         <p class="card-subtitle text-muted">
                             <small>Created at: {{ $comment->created_at->format('F jS Y') }}</small>
                         </p>
