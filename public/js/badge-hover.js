@@ -50,7 +50,6 @@ if(moderator != null) {
 
 if(owner != null) {
     owner.addEventListener('mouseover', (event)=> {
-        console.log('hello')
         const ownerBlock = document.getElementById('owner')
         ownerBlock.classList.remove('hidden')
         owner.addEventListener('mouseout', (event)=> {
