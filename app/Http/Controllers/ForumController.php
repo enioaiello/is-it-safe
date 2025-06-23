@@ -8,7 +8,7 @@ use App\Models\Forums;
 class ForumController extends Controller {
     public function showForm($id)
     {
-        $forum = Forums::with(['user', 'comments.user'])
+        $forum = Forums::with(['user.picture', 'comments.user'])
             ->where('id', $id)
             ->firstOrFail();
 
@@ -28,7 +28,7 @@ class ForumController extends Controller {
 
     public function showSpecForm($trimmed)
     {
-        
+
         $forums = Forums::where('title', 'LIKE', '%'. $trimmed .'%')->get();
         return view('form/all-forum', compact('forums', 'trimmed'));
     }
