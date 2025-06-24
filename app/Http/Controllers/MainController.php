@@ -45,8 +45,19 @@ class MainController extends Controller
         return view('form.propos');
     }
 
-    public function showResultPage() {
-        return view('form.result');
+    public function showResultPageUrl() {
+        $url = true;
+        return view('form.result', compact('url'));
+    }
+
+    public function showResultPageEmail() {
+        $email = true;
+        return view('form.result', compact('email'));
+    }
+
+    public function showResultPagePhone() {
+        $phone = true;
+        return view('form.result', compact('phone'));
     }
 
     public function admin()

@@ -142,9 +142,11 @@
                         }
                         $trimmed = getDomainName($_POST['url'])
                     @endphp
+                    @if(isset($url))
                     <a href="/forum/search/{{ $trimmed }}">
                         <button class="btn btn-outline-light">Voir les forums associés</button>
                     </a>
+                        @endif
         </div>
             </div>
             <div class="result mt-3"></div>
@@ -158,34 +160,45 @@
             <button id="show-more" class="btn btn-outline-light d-none">Voir plus</button>
         </div>
     </div>
-
+    @if(isset($url))
     <div class="mt-4 text-center">
         <a id="full-report" href="#" target="_blank" class="btn btn-primary">Voir l'analyse complète</a>
     </div>
+        @endif
     </div>
 </main>
 
 
 
 <footer>
-    <button type="button" class="btn btn-success">
-        <i class="fas fa-comments me-2" aria-hidden="true"></i>Forum
-    </button>
-    <button type="button" class="btn btn-success">
-        <i class="fas fa-info-circle me-2" aria-hidden="true"></i>A propos
-    </button>
+    <a href="/forum">
+        <button type="button" class="btn btn-success">
+            <i class="fas fa-comments me-2" aria-hidden="true"></i>Forum
+        </button>
+    </a>
+    <a href="/propos">
+        <button type="button" class="btn btn-success">
+            <i class="fas fa-info-circle me-2" aria-hidden="true"></i>A propos
+        </button>
+    </a>
     <a href="/profile">
         <button type="button" class="btn btn-success">
             <i class="fas fa-user me-2" aria-hidden="true" ></i>Mon compte
         </button>
     </a>
 </footer>
-
+<p class="choice" style="display: none">{{ $_POST['url'] }}</p>
 <!-- Bootstrap JS Bundle -->
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"
 ></script>
-<script src="{{ asset('js/safe-it.js') }}"></script>
+@if(isset($url))
+    <script src="{{ asset('js/safe-it-url.js') }}"></script>
+@elseif(isset($email))
+    <script src="{{ asset('js/safe-it-email.js') }}"></script>
+@elseif(isset($phone))
+    <script src="{{ asset('js/safe-it-phone.js') }}"></script>
+@endif
 </body>
 </html>
