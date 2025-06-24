@@ -45,6 +45,11 @@ class MainController extends Controller
         return view('form.propos');
     }
 
+    public function showTOSPage()
+    {
+        return view('tos');
+    }
+
     public function showResultPage() {
         return view('form.result');
     }
@@ -95,7 +100,7 @@ class MainController extends Controller
         } else {
             User::where('id', $users->id_user)->increment('fame', 5);
         }
-        
+
         if ($user && $user->id_role < 3) {
             return redirect()->route('admin');
         } else {
