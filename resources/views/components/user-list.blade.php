@@ -1,12 +1,19 @@
 @foreach ($users as $user)
+<<<<<<< HEAD
+    <div class="bg-gray-200 dark:bg-gray-700 p-4 rounded shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+=======
     <div class="bg-gray-200 dark:bg-gray-700 p-4 rounded shadow flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+>>>>>>> dd73cbb2d3a1699a478d6aab2331b82944456eba
         <div>
             <p class="text-lg font-semibold text-gray-800 dark:text-white">
                 {{ $user->name }} ({{ $user->pseudo }})
             </p>
             <p class="text-sm text-gray-600 dark:text-gray-300">{{ $user->email }}</p>
+<<<<<<< HEAD
+=======
 
             <p class="text-sm text-gray-600 dark:text-gray-300">user fame : {{ $user->fame }}</p>
+>>>>>>> dd73cbb2d3a1699a478d6aab2331b82944456eba
         </div>
 
         <div class="flex gap-3">

@@ -5,18 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+<<<<<<< HEAD
+=======
 use Illuminate\Support\Facades\Auth;
+>>>>>>> dd73cbb2d3a1699a478d6aab2331b82944456eba
 
 class AdminController extends Controller
 {
     public function DeleteUser($id)
     {
+<<<<<<< HEAD
+=======
         $user = Auth::user();
 
         if (!$user || $user->id_role >= 3) {
             abort(403, 'Accès non autorisé');
         }
 
+>>>>>>> dd73cbb2d3a1699a478d6aab2331b82944456eba
         User::destroy($id);
 
         return redirect('/admin');
@@ -24,12 +30,15 @@ class AdminController extends Controller
 
     public function search($pseudo)
     {
+<<<<<<< HEAD
+=======
         $user = Auth::user();
 
         if (!$user || $user->id_role >= 3) {
             abort(403, 'Accès non autorisé');
         }
 
+>>>>>>> dd73cbb2d3a1699a478d6aab2331b82944456eba
         $users = User::where('pseudo', 'LIKE', $pseudo . '%')->get();
 
         if ($users->isEmpty()) {
@@ -49,12 +58,15 @@ class AdminController extends Controller
 
     public function allUsers()
     {
+<<<<<<< HEAD
+=======
         $user = Auth::user();
 
         if (!$user || $user->id_role >= 3) {
             abort(403, 'Accès non autorisé');
         }
 
+>>>>>>> dd73cbb2d3a1699a478d6aab2331b82944456eba
         $users = User::all();
 
         $html = view('components.user-list', ['users' => $users])->render();
