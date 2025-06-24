@@ -16,4 +16,34 @@ class MessageController extends Controller
 
         return view('message', ['messages' => $messages]);
     }
+
+    public function addMessage(Request $request) {
+        try {
+            $request->validate([
+                'title' => 'required|string|max:100',
+                'message' => 'required|string|max:10000',
+            ]);
+
+            Message::create([
+                'title' => $request->title,
+                'message' => $request->message,
+                'id_user' => $request->id_user
+            ]);
+
+            $user = \App\Models\User::with('picture')->find($request->id_user);
+
+            $pseudo = $user->pseudo;
+            $picture_url = $user->picture ? $user->picture->picture_url : null;
+
+            return response()->json([
+                'success' => true,
+                'pseudo' => $pseudo,
+                'picture_url' => $picture_url,
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Erreur serveur : '.$e->getMessage()
+            ], 500);
+        }
+    }
 }

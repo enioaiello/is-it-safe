@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
@@ -64,6 +65,8 @@ Route::get('/send-test-email/{email}', function (string $email) {
     Mail::to($email)->send(new TestEmail());
     return "Email envoyé !";
 });
+
+Route::post('/add-message', [MessageController::class, 'addMessage']);
 
 Route::put('/editComment/{id}', [CommentController::class, 'update']);
 Route::delete('/deleteComment/{id}', [CommentController::class, 'destroy']);

@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Is It Safe ? Form</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
     <style>
         body {
             background-color: #50C878;
@@ -60,6 +65,9 @@
                 font-size: 0.9rem;
             }
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -68,18 +76,46 @@
 </header>
 
 <main class="container py-4">
+    <button id="form-btn" class="btn btn-success mb-3">
+        <i class="fas fa-plus me-2"></i> Add message
+    </button>
+
+    <form id="form-message" class="d-none bg-white p-4 rounded shadow-sm border mx-auto d-block mb-4" style="max-width: 480px;">
+        @csrf
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" id="title" class="form-control" placeholder="Enter title" required maxlength="100">
+        </div>
+
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Write your message" required maxlength="10000"></textarea>
+        </div>
+
+        <input type="hidden" name="id_user" id="id_user" value="{{ auth()->user()->id }}">
+
+        <button type="submit" class="btn btn-primary w-100">Send message</button>
+    </form>
+
     @foreach($messages as $message)
-        <div class="card message-card mb-3">
-            <div class="card-header d-flex align-items-center">
-                <img src="{{ asset('image/' . $message->user->picture->picture_url) }}" class="rounded-circle me-3" alt="Photo de {{ $message->user->pseudo }}" width="50" height="50">
-                <div>
-                    <h6 class="mb-0">{{ $message->user->pseudo }}</h6>
-                    <small>{{ $message->created_at->format('d/m/Y H:i') }}</small>
+        <div id="messages-container">
+            <div class="card message-card mb-3">
+                <div class="card-header d-flex align-items-center">
+                    <img src="{{ asset('image/' . $message->user->picture->picture_url) }}" class="rounded-circle me-3" alt="Photo de {{ $message->user->pseudo }}" width="50" height="50">
+                    <div>
+                        <h6 class="mb-0">
+                            {{ $message->user->pseudo }}
+                            <span class="ms-2 d-inline-block align-middle">
+                                @include('profile.partials.user-badges', ['user' => $message->user, 'size' => '20px', 'highest' => true])
+                            </span>
+                        </h6>
+                        <small>{{ $message->created_at->format('d/m/Y H:i') }}</small>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ $message->title }}</h5>
-                <p class="card-text">{{ $message->message }}</p>
+                <div class="card-body">
+                    <h5 class="card-title">{{ $message->title }}</h5>
+                    <p class="card-text">{{ $message->message }}</p>
+                </div>
             </div>
         </div>
     @endforeach
@@ -98,5 +134,7 @@
         </button>
     </a>
 </footer>
+<script src="{{ asset('js/message.js') }}"></script>
+<script src="{{ asset('js/badge-hover.js') }}"></script>
 </body>
 </html>
