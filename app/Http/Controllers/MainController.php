@@ -112,6 +112,7 @@ class MainController extends Controller
         $reportFame = Reports::where('id', $id)->first();
         $users = Reports::where('id', $id)->first();
         $fame = User::where('id', $reportFame->id_user)->first();
+
         if ($fame->fame < 10) {
             User::where('id', $id)->update(['fame' => 0]);
         } else {

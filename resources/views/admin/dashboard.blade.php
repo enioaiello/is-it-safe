@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+
     <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div id="accordion-collapse" data-accordion="collapse" class="space-y-4">
 
@@ -48,6 +49,7 @@
                     </div>
                 </div>
             </div>
+
 
             {{-- Accordéon : Historique des signalements --}}
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden transition-all duration-200">

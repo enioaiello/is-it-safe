@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <style>
          body {
             background: #198754;
@@ -29,6 +30,17 @@
             min-width: 110px;
             margin: 0.25rem 0.5rem;
         }
+        button {
+            border: 1px solid #50C878;
+            border-radius: 10px;
+            width: 150px;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #50C878;
+            color: white;
+        }
         /* Responsive margin for small devices */
         @media (max-width: 575.98px) {
             .form-container {
@@ -44,6 +56,7 @@
     </style>
 </head>
 <body>
+@vite(['resources/css/app.css'])
 <header class="text-center">
     <h1 class="fw-bold">Is It Safe ?</h1>
 </header>
@@ -81,10 +94,11 @@
                         <p class="card-text comment-content">{{ $comment->comment }}</p>
 
                         <div class="d-flex align-items-center mb-2">
-                            <div class="mb-0 text-muted">
+                            <div class="mb-0 text-muted flex flex-row items-center">
                                 <span>By: </span>
                                 <img src="{{ asset('image/' . $comment->user->picture->picture_url) }}" alt="Profile picture" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
                                 <span><strong>{{ $comment->user->pseudo }}</strong></span>
+                                @include('profile.partials.user-badges', ['user' => $comment->user, 'size' => '20px', 'highest' => true])
                             </div>
                         </div>
 
@@ -118,6 +132,7 @@
         </button>
     </a>
 </footer>
+<script src="{{ asset('js/badge-hover.js') }}"></script>
 <script src="{{ asset('js/comment/new_comment.js') }}"></script>
 <script src="{{ asset('js/comment/delete_comment.js') }}"></script>
 <script src="{{ asset('js/comment/edit_comment.js') }}"></script>
