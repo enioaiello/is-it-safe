@@ -1,5 +1,5 @@
 @foreach ($users as $user)
-    <div class="bg-gray-200 dark:bg-gray-700 p-4 rounded shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+    <div class="bg-gray-200 dark:bg-gray-700 p-4 rounded shadow flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
         <div>
             <p class="text-lg font-semibold text-gray-800 dark:text-white">
                 {{ $user->name }} ({{ $user->pseudo }})
