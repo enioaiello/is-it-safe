@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
@@ -35,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [\App\Http\Controllers\MainController::class, 'admin'])
         ->name('admin');
 
+    Route::get('/message', [\App\Http\Controllers\MessageController::class, 'showPage'])
+        ->name('message');
+
     Route::get('/report_log', [MainController::class, 'reportLog'])
         ->name('report_log');
 
@@ -62,6 +66,8 @@ Route::get('/send-test-email/{email}', function (string $email) {
     Mail::to($email)->send(new TestEmail());
     return "Email envoyé !";
 });
+
+Route::post('/add-message', [MessageController::class, 'addMessage']);
 
 Route::put('/editComment/{id}', [CommentController::class, 'update']);
 Route::delete('/deleteComment/{id}', [CommentController::class, 'destroy']);

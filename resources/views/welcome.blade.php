@@ -68,6 +68,7 @@
                     </a>
                 @endif
             @endauth
+            <a href="{{ url('/message') }}" class="btn btn-outline-dark btn-sm">message</a>
         </nav>
     @endif
 </header>

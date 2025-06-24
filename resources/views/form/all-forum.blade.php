@@ -78,7 +78,7 @@
                         Créé par <strong>{{ $forum->user->pseudo ?? 'Utilisateur supprimé' }}</strong>
                         le {{ $forum->created_at->format('F jS Y') }}
                     </p>
-                    @if($forum->user->pseudo === auth()->user()->pseudo)
+                    @if($forum->user?->pseudo === auth()->user()->pseudo)
                         <button data-id-forum="{{ $forum->id }}" id="edit-forum">Edit</button>
                         <button data-id-forum="{{ $forum->id }}" id="delete-forum">Delete</button>
                     @elseif(auth()->user()->id_role == 1 || auth()->user()->id_role == 2)
