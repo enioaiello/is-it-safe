@@ -42,8 +42,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/report_log', [MainController::class, 'reportLog'])
         ->name('report_log');
 
-    Route::post('/result', [\App\Http\Controllers\MainController::class, 'showResultPage'])
-        ->name('result');
+    Route::post('/result/url', [\App\Http\Controllers\MainController::class, 'showResultPageUrl'])
+        ->name('result_url');
+
+    Route::post('/result/email', [\App\Http\Controllers\MainController::class, 'showResultPageEmail'])
+        ->name('result_email');
+
+    Route::post('/result/phone', [\App\Http\Controllers\MainController::class, 'showResultPagePhone'])
+        ->name('result_phone');
 
     Route::post('/report/confirm', [MainController::class, 'reportInsertion'])
         ->name('confirm_report');
