@@ -42,6 +42,12 @@ class User extends Authenticatable
         return $this->belongsTo(User_picture::class, 'id_picture');
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'id_user');
+    }
+
+
 
     /**
      * Get the attributes that should be cast.

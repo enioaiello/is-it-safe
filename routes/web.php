@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [\App\Http\Controllers\MainController::class, 'admin'])
         ->name('admin');
 
+    Route::get('/message', [\App\Http\Controllers\MessageController::class, 'showPage'])
+        ->name('message');
+
     Route::get('/report_log', [MainController::class, 'reportLog'])
         ->name('report_log');
 

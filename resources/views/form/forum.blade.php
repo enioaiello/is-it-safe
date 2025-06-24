@@ -96,8 +96,8 @@
                         <div class="d-flex align-items-center mb-2">
                             <div class="mb-0 text-muted flex flex-row items-center">
                                 <span>By: </span>
-                                <img src="{{ asset('image/' . $comment->user->picture->picture_url) }}" alt="Profile picture" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
-                                <span><strong>{{ $comment->user->pseudo }}</strong></span>
+                                <img src="{{ asset('image/' . $comment->user?->picture?->picture_url) }}" alt="Profile picture" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+                                <span><strong>{{ $comment->user?->pseudo }}</strong></span>
                                 @include('profile.partials.user-badges', ['user' => $comment->user, 'size' => '20px', 'highest' => true])
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                             <small>Created at: {{ $comment->created_at->format('F jS Y') }}</small>
                         </p>
 
-                        @if($comment->user->pseudo === auth()->user()->pseudo)
+                        @if($comment->user?->pseudo === auth()->user()->pseudo)
                             <button data-id-comment="{{ $comment->id }}" id="edit-comment">Edit</button>
                             <button data-id-comment="{{ $comment->id }}" id="delete-comment">Delete</button>
                         @elseif(auth()->user()->id_role == 1 || auth()->user()->id_role == 2)
