@@ -78,7 +78,7 @@
                         <div class="space-y-4">
                             @forelse ($reports as $report)
                                 <div class="group bg-gray dark:bg-gray-700/50 p-5 rounded-lg border border-gray-100 dark:border-gray-700 shadow-xs hover:shadow-sm transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                                    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
                                         <div class="flex-1">
                                             <div class="flex items-center space-x-3">
                                                 <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">

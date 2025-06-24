@@ -13,7 +13,7 @@
                     <div x-show="page === 'dashboard'">
                         <h1 class="text-xl font-bold mb-2">Dashboard</h1>
                         <img src="{{ asset('image/'. $pp->picture_url) }}" alt="photo de profile">
-                        <h1 class="text-lg font-medium text-gray-900 dark:text-gray-100" style="display:flex; flex-direction:row;">Bienvenue {{ \Illuminate\Support\Facades\Auth::user()->pseudo }}@include('partials.user-badges', ['user' => Auth::user(), 'size' => '25px'])</h1>
+                        <h1 class="text-lg font-medium text-gray-900 dark:text-gray-100" style="display:flex; flex-direction:row;">Bienvenue {{ \Illuminate\Support\Facades\Auth::user()->pseudo }}@include('profile.partials.user-badges', ['user' => Auth::user(), 'size' => '25px'])</h1>
                         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">You have {{ Auth::user()->fame }} fame !</p>
                         <p></p>
                     </div>

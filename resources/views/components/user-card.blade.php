@@ -1,5 +1,5 @@
 <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow hover:shadow-md transition mb-4">
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
         <h4 class="text-lg font-medium text-gray-700 dark:text-gray-200">
             {{ $user->pseudo }}
         </h4>
