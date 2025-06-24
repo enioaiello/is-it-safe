@@ -23,7 +23,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/propos', [MainController::class, 'showProposPage'])->name('propos');
-Route::get('/tos', [MainController::class, 'showTOSPage'])->name('tos');
 
 Route::middleware('auth')->group(function () {
     Route::get('/safe-it', [\App\Http\Controllers\MainController::class, 'showSafePage'])

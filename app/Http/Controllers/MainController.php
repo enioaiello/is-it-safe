@@ -45,11 +45,6 @@ class MainController extends Controller
         return view('form.propos');
     }
 
-    public function showTOSPage()
-    {
-        return view('tos');
-    }
-
     public function showResultPage() {
         return view('form.result');
     }
