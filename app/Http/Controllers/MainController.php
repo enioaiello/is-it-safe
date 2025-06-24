@@ -89,8 +89,9 @@ class MainController extends Controller
     {
         $user = Auth::user();
         $report = Reports::where('id', $id)->update(['id_status' => 2]);
+        $reportFame = Reports::where('id', $id)->first();
         $users = Reports::where('id', $id)->first();
-        $fame = User::where('id', $report->id_user)->get();
+        $fame = User::where('id', $reportFame->id_user)->first();
         if( $fame->fame > 195) {
             User::where('id', $id)->update(['fame' => 200]);
         } else {
@@ -108,9 +109,10 @@ class MainController extends Controller
     {
         $user = Auth::user();
         $report = Reports::where('id', $id)->update(['id_status' => 3]);
+        $reportFame = Reports::where('id', $id)->first();
         $users = Reports::where('id', $id)->first();
-        $fame = User::where('id', $report->id_user)->get();
-        if( $fame->fame < 10) {
+        $fame = User::where('id', $reportFame->id_user)->first();
+        if ($fame->fame < 10) {
             User::where('id', $id)->update(['fame' => 0]);
         } else {
             User::where('id', $users->id_user)->decrement('fame', 10);
@@ -121,6 +123,5 @@ class MainController extends Controller
         } else {
             abort(403, 'Accès non autorisé');
         }
-
     }
 }
