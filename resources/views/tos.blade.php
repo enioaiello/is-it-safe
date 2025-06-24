@@ -22,6 +22,7 @@
     <h1 class="fw-bold text-white">Is It Safe ?</h1>
 </header>
 <main class="container my-5">
+    <a href="/" class="btn btn-light back-button mb-3">← Retour</a>
     <h2 class="mb-2 text-center">Conditions d'utilisation</h2>
     <p class="mb-2">Date de dernière mise à jour : 24 juin 2025</p>
 
