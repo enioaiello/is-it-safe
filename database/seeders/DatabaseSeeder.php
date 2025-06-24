@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             Status_reportsSeeder::class,
             User_pictureSeeder::class,
             MessageSeeder::class,
+            ReportSeeder::class
         ]);
     }
 }

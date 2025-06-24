@@ -11,14 +11,11 @@
 
         <div class="flex gap-3">
             {{-- Bouton modifier --}}
-            <form action="{{ route('edit') }}" method="POST">
-                @csrf
-                <input type="hidden" name="user_id" value="{{ $user->id }}">
-                <button type="submit"
-                        class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">
-                    Modifier
-                </button>
-            </form>
+            <a href="{{ route('admin.users.edit', $user->id) }}"
+               class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">
+                Modifier
+            </a>
+
 
             {{-- Bouton supprimer --}}
             <form action="{{ route('destroy', ['id' => $user->id]) }}" method="POST" onsubmit="return confirm('Supprimer ce compte ?')">

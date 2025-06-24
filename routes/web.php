@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/propos', [MainController::class, 'showProposPage'])->name('propos');
+Route::get('/tos', [MainController::class, 'showTOSPage'])->name('tos');
 
 Route::middleware('auth')->group(function () {
     Route::get('/safe-it', [\App\Http\Controllers\MainController::class, 'showSafePage'])
@@ -84,6 +85,12 @@ Route::post('/edit', [\App\Http\Controllers\AdminController::class, 'edit'])
 Route::get('/admin/search/{pseudo}', [\App\Http\Controllers\AdminController::class, 'search'])->name('admin.users.search');
 
 Route::get('/admin/users', [\App\Http\Controllers\AdminController::class, 'allUsers']);
+
+Route::get('/admin/users/{user}/edit', [\App\Http\Controllers\AdminController::class, 'edit'])->name('admin.users.edit');
+Route::post('/admin/users/update', [\App\Http\Controllers\AdminController::class, 'update'])->name('admin.users.update');
+
+
+
 
 
 
