@@ -5,6 +5,8 @@
                 {{ $user->name }} ({{ $user->pseudo }})
             </p>
             <p class="text-sm text-gray-600 dark:text-gray-300">{{ $user->email }}</p>
+
+            <p class="text-sm text-gray-600 dark:text-gray-300">user fame : {{ $user->fame }}</p>
         </div>
 
         <div class="flex gap-3">
