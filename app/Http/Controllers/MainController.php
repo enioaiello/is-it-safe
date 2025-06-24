@@ -54,10 +54,11 @@ class MainController extends Controller
         $user = Auth::user();
         $reports = Reports::where('id_status', 1)
         ->get();
+        $users = User::all();
 
 
         if ($user && $user->id_role < 3) {
-            return view('admin.dashboard', compact('reports'));
+            return view('admin.dashboard', compact('reports'), compact('users'));
         } else {
             abort(403, 'Accès non autorisé');
         }
@@ -95,7 +96,7 @@ class MainController extends Controller
         } else {
             User::where('id', $users->id_user)->increment('fame', 5);
         }
-        
+
         if ($user && $user->id_role < 3) {
             return redirect()->route('admin');
         } else {

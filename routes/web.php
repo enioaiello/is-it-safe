@@ -8,6 +8,7 @@ use App\Http\Controllers\MainController;
 use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
 
+
 Route::get('/', [MainController::class, 'index'])
     ->name('home');
 
@@ -66,6 +67,20 @@ Route::delete('/deleteComment/{id}', [CommentController::class, 'destroy']);
 
 Route::put('/editForum/{id}', [ForumController::class, 'update']);
 Route::delete('/deleteForum/{id}', [ForumController::class, 'destroy']);
+
+
+Route::delete('delete/{id}', [\App\Http\Controllers\AdminController::class, 'DeleteUser'])
+    ->name('destroy');
+
+Route::post('/edit', [\App\Http\Controllers\AdminController::class, 'edit'])
+    ->name('edit');
+
+Route::get('/admin/search/{pseudo}', [\App\Http\Controllers\AdminController::class, 'search'])->name('admin.users.search');
+
+Route::get('/admin/users', [\App\Http\Controllers\AdminController::class, 'allUsers']);
+
+
+
 
 
 require __DIR__.'/auth.php';
