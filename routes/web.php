@@ -80,6 +80,12 @@ Route::get('/admin/search/{pseudo}', [\App\Http\Controllers\AdminController::cla
 
 Route::get('/admin/users', [\App\Http\Controllers\AdminController::class, 'allUsers']);
 
+Route::get('/admin/users/{user}/edit', [\App\Http\Controllers\AdminController::class, 'edit'])->name('admin.users.edit');
+Route::post('/admin/users/update', [\App\Http\Controllers\AdminController::class, 'update'])->name('admin.users.update');
+
+
+
+
 
 
 

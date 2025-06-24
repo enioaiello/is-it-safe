@@ -12,7 +12,7 @@ class ForumController extends Controller {
             ->where('id', $id)
             ->firstOrFail();
 
-        //dd($forum->toArray());
+
 
         return view('form/forum', ['forum' => $forum]);
     }
