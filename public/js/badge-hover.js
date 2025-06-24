@@ -3,7 +3,6 @@ const trusted = document.querySelector('.hover-trusted')
 const encyclopedy = document.querySelector('.hover-encyclopedy')
 const moderator = document.querySelector('.hover-mod')
 const owner = document.querySelector('.hover-owner')
-
 if(failure != null) {
     failure.addEventListener('mouseover', (event)=> {
     const failureBlock = document.getElementById('failure')

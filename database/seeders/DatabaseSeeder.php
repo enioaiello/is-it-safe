@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CommentsSeeder::class,
             Status_reportsSeeder::class,
             User_pictureSeeder::class,
+            ReportSeeder::class
         ]);
     }
 }
