@@ -54,10 +54,11 @@ class MainController extends Controller
         $user = Auth::user();
         $reports = Reports::where('id_status', 1)
         ->get();
+        $users = User::all();
 
 
         if ($user && $user->id_role < 3) {
-            return view('admin.dashboard', compact('reports'));
+            return view('admin.dashboard', compact('reports'), compact('users'));
         } else {
             abort(403, 'Accès non autorisé');
         }
@@ -111,7 +112,8 @@ class MainController extends Controller
         $reportFame = Reports::where('id', $id)->first();
         $users = Reports::where('id', $id)->first();
         $fame = User::where('id', $reportFame->id_user)->first();
-        if( $fame->fame < 10) {
+
+        if ($fame->fame < 10) {
             User::where('id', $id)->update(['fame' => 0]);
         } else {
             User::where('id', $users->id_user)->decrement('fame', 10);
@@ -122,6 +124,5 @@ class MainController extends Controller
         } else {
             abort(403, 'Accès non autorisé');
         }
-
     }
 }
