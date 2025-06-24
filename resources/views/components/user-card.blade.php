@@ -9,8 +9,8 @@
         </h4>
 
         <div class="flex gap-2 justify-center sm:justify-end">
-            <a href="{{ route('edit', $user->id) }}"
-               class="px-3 py-1 text-sm font-semibold text-white bg-blue-500 rounded hover:bg-blue-600 transition">
+            <a href="{{ route('admin.users.edit', $user->id) }}"
+               class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">
                 Modifier
             </a>
             <form action="{{ route('destroy', $user->id) }}" method="POST"

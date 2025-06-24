@@ -22,6 +22,8 @@
         <h1 class="fw-bold text-white">Is It Safe ?</h1>
     </header>
     <main class="container my-5">
+        <a href="/" class="btn btn-light back-button mb-3">← Retour</a>
+
         <h2 class="mb-2 text-center">À propos</h2>
         <p class="mb-2">Nous avons conçu <span class="fw-semibold">Is It Safe?</span> car nous vivons dans un monde où
             le pourriel, la malhonnêteté et la pollution semblent normaux.</p>

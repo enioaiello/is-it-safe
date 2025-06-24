@@ -58,6 +58,12 @@ class MainController extends Controller
     public function showResultPagePhone() {
         $phone = true;
         return view('form.result', compact('phone'));
+      
+    public function showTOSPage()
+    {
+        return view('tos');
+    }
+
     }
 
     public function admin()

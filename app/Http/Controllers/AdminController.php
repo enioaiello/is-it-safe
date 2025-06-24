@@ -64,4 +64,34 @@ class AdminController extends Controller
             'html' => $html
         ]);
     }
+
+    public function edit(User $user)
+    {
+        $currentUser = Auth::user();
+
+        if (!$currentUser || $currentUser->id_role >= 3) {
+            abort(403, 'Accès non autorisé');
+        }
+
+        return view('admin.edit', compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+        $currentUser = Auth::user();
+
+        if (!$currentUser || $currentUser->id_role >= 3) {
+            abort(403, 'Accès non autorisé');
+        }
+
+        $user = User::findOrFail($request->input('id'));
+
+        $user->pseudo = $request->input('pseudo');
+        $user->email = $request->input('email');
+        $user->fame = $request->input('fame');
+
+        $user->save();
+
+        return redirect()->route('admin')->with('success', 'Utilisateur mis à jour avec succès.');
+    }
 }

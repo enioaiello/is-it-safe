@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/propos', [MainController::class, 'showProposPage'])->name('propos');
+Route::get('/tos', [MainController::class, 'showTOSPage'])->name('tos');
 
 Route::middleware('auth')->group(function () {
     Route::get('/safe-it', [\App\Http\Controllers\MainController::class, 'showSafePage'])
@@ -33,6 +35,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [\App\Http\Controllers\MainController::class, 'admin'])
         ->name('admin');
+
+    Route::get('/message', [\App\Http\Controllers\MessageController::class, 'showPage'])
+        ->name('message');
 
     Route::get('/report_log', [MainController::class, 'reportLog'])
         ->name('report_log');
@@ -68,6 +73,8 @@ Route::get('/send-test-email/{email}', function (string $email) {
     return "Email envoyé !";
 });
 
+Route::post('/add-message', [MessageController::class, 'addMessage']);
+
 Route::put('/editComment/{id}', [CommentController::class, 'update']);
 Route::delete('/deleteComment/{id}', [CommentController::class, 'destroy']);
 
@@ -84,6 +91,12 @@ Route::post('/edit', [\App\Http\Controllers\AdminController::class, 'edit'])
 Route::get('/admin/search/{pseudo}', [\App\Http\Controllers\AdminController::class, 'search'])->name('admin.users.search');
 
 Route::get('/admin/users', [\App\Http\Controllers\AdminController::class, 'allUsers']);
+
+Route::get('/admin/users/{user}/edit', [\App\Http\Controllers\AdminController::class, 'edit'])->name('admin.users.edit');
+Route::post('/admin/users/update', [\App\Http\Controllers\AdminController::class, 'update'])->name('admin.users.update');
+
+
+
 
 
 
