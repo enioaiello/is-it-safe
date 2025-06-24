@@ -75,43 +75,39 @@
                 </h2>
                 <div id="accordion-reports-body" class="hidden" aria-labelledby="accordion-reports-heading">
                     <div class="p-6 pt-0 border-t border-gray-100 dark:border-gray-700">
-                        <div class="space-y-4">
+                        <div class="space-y-6">
+
                             @forelse ($reports as $report)
-                                <div class="group bg-gray dark:bg-gray-700/50 p-5 rounded-lg border border-gray-100 dark:border-gray-700 shadow-xs hover:shadow-sm transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-                                        <div class="flex-1">
-                                            <div class="flex items-center space-x-3">
-                                                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                                    {{ $report->website_name }}
-                                                </h4>
-                                                <span class="text-xs px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300">
-                                                    {{ $report->created_at->format('d M Y') }}
-                                                </span>
-                                            </div>
-                                            @if ($report->description)
-                                                <p class="mt-2 text-gray-600 dark:text-gray-300">
-                                                    {{ $report->description }}
-                                                </p>
-                                            @endif
+
+                            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-md transition hover:shadow-lg border dark:border-gray-600">
+                                <div class="flex flex-row md:flex-row md:justify-between gap-4">
+                                    <div class="flex flex-col">
+                                        <div>
+                                            <h1 class="text-2xl text-gray-600 dark:text-gray-300">
+                                                {{ $report->website_name }}
+                                            </h1>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300">
+                                                Signalé le {{ $report->created_at->format('d M Y') }}
+                                            </p>
                                         </div>
-                                        <div class="flex gap-2">
-                                            <a href="/report/accept/{{ $report->id }}"
-                                               class="p-2 rounded-lg bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors"
-                                               title="Accepter">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                                </svg>
+                                        @if ($report->description)
+                                            <p class="mt-4 text-gray-800 dark:text-gray-200">
+                                                {{ $report->description }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: start; width: 50px">
+                                        <a href="/report/accept">
+                                            <a href="/report/accept/{{ $report->id }}">
+                                                <div class=" validate bg-success" style="border-radius: 5px; width: 20px; height: 20px; background-color: #50C878"></div>
                                             </a>
-                                            <a href="/report/refuse/{{ $report->id }}"
-                                               class="p-2 rounded-lg bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors"
-                                               title="Refuser">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </div>
+                                            <a href="/report/refuse">
+                                                <a href="/report/refuse/{{ $report->id }}">
+                                                    <div class="refuse bg-danger" style="border-radius: 5px; width: 20px; height: 20px; background-color: #DC143C"></div>
+                                                </a>
                                     </div>
                                 </div>
+                            </div>
                             @empty
                                 <div class="text-center py-8">
 
