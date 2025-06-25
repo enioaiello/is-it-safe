@@ -76,27 +76,28 @@
 </header>
 
 <main class="container py-4">
-    <button id="form-btn" class="btn btn-success mb-3">
-        <i class="fas fa-plus me-2"></i> Add message
-    </button>
+    @if(auth()->user()->id_role == 1 || auth()->user()->id_role == 2)
+        <button id="form-btn" class="btn btn-success mb-3">
+            <i class="fas fa-plus me-2"></i> Add message
+        </button>
 
-    <form id="form-message" class="d-none bg-white p-4 rounded shadow-sm border mx-auto d-block mb-4" style="max-width: 480px;">
-        @csrf
-        <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" name="title" id="title" class="form-control" placeholder="Enter title" required maxlength="100">
-        </div>
+        <form id="form-message" class="d-none bg-white p-4 rounded shadow-sm border mx-auto d-block mb-4" style="max-width: 480px;">
+            @csrf
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Enter title" required maxlength="100">
+            </div>
 
-        <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Write your message" required maxlength="10000"></textarea>
-        </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea name="message" id="message" class="form-control" rows="4" placeholder="Write your message" required maxlength="10000"></textarea>
+            </div>
 
-        <input type="hidden" name="id_user" id="id_user" value="{{ auth()->user()->id }}">
+            <input type="hidden" name="id_user" id="id_user" value="{{ auth()->user()->id }}">
 
-        <button type="submit" class="btn btn-primary w-100">Send message</button>
-    </form>
-
+            <button type="submit" class="btn btn-primary w-100">Send message</button>
+        </form>
+    @endif
     @foreach($messages as $message)
         <div id="messages-container">
             <div class="card message-card mb-3">

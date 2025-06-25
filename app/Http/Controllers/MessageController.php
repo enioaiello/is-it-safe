@@ -24,6 +24,10 @@ class MessageController extends Controller
                 'message' => 'required|string|max:10000',
             ]);
 
+            if (auth()->user()->id_role !== 1 && auth()->user()->id_role !== 2) {
+                return response()->json(['error' => 'Unauthorized'], 403);
+            }
+
             Message::create([
                 'title' => $request->title,
                 'message' => $request->message,
