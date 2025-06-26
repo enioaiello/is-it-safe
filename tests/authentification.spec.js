@@ -5,7 +5,7 @@ test('Registration', async ({ page }) => {
   await page.goto('http://127.0.0.1:8000/');
     await page.locator('a:has-text("Register")').click();
     await page.locator('#name').fill('Playwright');
-    await page.locator('#email').fill('playwright@yggg.com');
+    await page.locator('#email').fill('playwright@gggg.com');
     await page.waitForTimeout(300);  // 300ms pause to help UI catch up
     await page.locator('#password').fill('fillingPassword');
     await page.waitForTimeout(300);  // 300ms pause to help UI catch up

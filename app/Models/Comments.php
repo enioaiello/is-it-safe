@@ -16,6 +16,12 @@ class Comments extends Model
         'comment',
     ];
 
+    public function setCommentAttribute($comment)
+    {
+        $this->attributes['comment'] = substr(trim($comment), 0, 250);
+    }
+
+
     public function forum()
     {
         return $this->belongsTo(Forums::class, 'id_forum');
