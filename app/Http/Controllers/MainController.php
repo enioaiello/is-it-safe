@@ -55,16 +55,16 @@ class MainController extends Controller
         return view('form.result', compact('email'));
     }
 
-    public function showResultPagePhone() {
+    public function showResultPagePhone()
+    {
         $phone = true;
         return view('form.result', compact('phone'));
-      
+    }
     public function showTOSPage()
     {
         return view('tos');
     }
 
-    }
 
     public function admin()
     {
