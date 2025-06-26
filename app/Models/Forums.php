@@ -16,6 +16,19 @@ class Forums extends Model
         'description',
     ];
 
+    public function setTitleAttribute($value)
+    {
+        // Met la première lettre de chaque mot en majuscule et supprime les espaces en trop
+        $this->attributes['title'] = ucwords(strtolower(trim($value)));
+    }
+
+    public function setDescriptionAttribute($value)
+    {
+        // Supprime les espaces inutiles et limite à 500 caractères max
+        $this->attributes['description'] = substr(trim($value), 0, 500);
+    }
+
+
     public function comments()
     {
         return $this->hasMany(Comments::class, 'id_forum');
